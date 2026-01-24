@@ -11,74 +11,168 @@ const heroImage = "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4
 <Layout title="Contact Us | Vintage Villa and Spa">
   <Header />
 
+  <!-- Hero with "Short" height for inner pages -->
   <Hero 
-    title="Contact Us"
-    subtitle="Get in Touch"
+    title="Get in Touch"
+    subtitle="We'd love to hear from you"
     backgroundImage={heroImage}
+    size="short"
   />
 
-  <section class="py-20 px-4 bg-vintage-cream">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-      <!-- Contact Info -->
-      <div>
-        <h2 class="text-3xl font-serif font-bold text-vintage-dark mb-6">Visit Us</h2>
-        <p class="text-vintage-text opacity-80 mb-8">
-          We are located in the heart of the city, offering a quick escape from the daily hustle. 
-          Reach out to us for appointments or membership inquiries.
+  <section class="py-24 px-4 bg-vintage-cream relative overflow-hidden">
+    <!-- Decorative background element -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-vintage-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+      
+      <!-- Contact Info & Hours -->
+      <div class="flex flex-col justify-center">
+        <span class="text-vintage-gold font-bold uppercase tracking-widest text-xs mb-2">Locate Us</span>
+        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Visit Our Sanctuary</h2>
+        <p class="text-lg text-vintage-text opacity-80 mb-10 leading-relaxed">
+          Located in the quiet district of Wellness City, Vintage Villa offers a quick escape from the daily hustle. 
+          Reach out to us for appointments, membership inquiries, or private events.
         </p>
         
-        <div class="space-y-6">
-          <div class="flex items-start">
-            <span class="text-vintage-gold text-2xl mr-4">📍</span>
-            <div>
-              <h4 class="font-bold text-vintage-dark">Address</h4>
-              <p class="text-vintage-text opacity-80">123 Luxury Lane, Wellness City, WC 54321</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <!-- Contact Details -->
+          <div class="space-y-6">
+            <div class="flex items-start group">
+              <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark font-serif">Address</h4>
+                <p class="text-sm text-gray-600 mt-1">123 Luxury Lane,<br/>Wellness City, WC 54321</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start group">
+              <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark font-serif">Phone</h4>
+                <p class="text-sm text-gray-600 mt-1 hover:text-vintage-gold transition-colors"><a href="tel:+1234567890">+1 (234) 567 890</a></p>
+              </div>
+            </div>
+            
+            <div class="flex items-start group">
+              <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark font-serif">Email</h4>
+                <p class="text-sm text-gray-600 mt-1 hover:text-vintage-gold transition-colors"><a href="mailto:info@vintagevilla.com">info@vintagevilla.com</a></p>
+              </div>
             </div>
           </div>
-          
-          <div class="flex items-start">
-            <span class="text-vintage-gold text-2xl mr-4">📞</span>
-            <div>
-              <h4 class="font-bold text-vintage-dark">Phone</h4>
-              <p class="text-vintage-text opacity-80">+123 456 7890</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start">
-            <span class="text-vintage-gold text-2xl mr-4">✉️</span>
-            <div>
-              <h4 class="font-bold text-vintage-dark">Email</h4>
-              <p class="text-vintage-text opacity-80">info@vintagevilla.com</p>
-            </div>
+
+          <!-- Opening Hours -->
+          <div class="bg-white p-6 rounded-sm shadow-sm border-l-2 border-vintage-gold">
+            <h4 class="font-serif font-bold text-vintage-dark mb-4 text-lg">Operating Hours</h4>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between">
+                <span class="text-gray-500">Mon - Fri</span>
+                <span class="font-bold text-vintage-dark">06:00 AM - 10:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-gray-500">Saturday</span>
+                <span class="font-bold text-vintage-dark">08:00 AM - 09:00 PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-gray-500">Sunday</span>
+                <span class="font-bold text-vintage-dark">08:00 AM - 08:00 PM</span>
+              </li>
+            </ul>
+            <p class="text-xs text-vintage-gold mt-4 italic">* Ladies only hours: Tue/Thu 10am-2pm</p>
           </div>
         </div>
       </div>
 
       <!-- Contact Form -->
-      <div class="bg-white p-8 shadow-lg rounded-sm border-t-4 border-vintage-gold">
-        <h3 class="text-2xl font-serif font-bold text-vintage-dark mb-6">Send a Message</h3>
+      <div class="bg-white p-10 shadow-xl rounded-sm relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-vintage-gold to-vintage-dark"></div>
+        <h3 class="text-2xl font-serif font-bold text-vintage-dark mb-2">Send a Message</h3>
+        <p class="text-gray-500 text-sm mb-8">For booking requests, please allow up to 24 hours for confirmation.</p>
+        
         <form class="space-y-6">
-          <div>
-            <label for="name" class="block text-sm font-bold text-vintage-dark mb-2">Name</label>
-            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 focus:border-vintage-gold focus:ring-1 focus:ring-vintage-gold outline-none transition-colors" placeholder="Your Name" />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Name</label>
+              <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 focus:border-vintage-gold focus:bg-white focus:ring-0 outline-none transition-all duration-300 rounded-sm" placeholder="John Doe" />
+            </div>
+            <div>
+              <label for="phone" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Phone</label>
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 focus:border-vintage-gold focus:bg-white focus:ring-0 outline-none transition-all duration-300 rounded-sm" placeholder="+1 (555) 000-0000" />
+            </div>
           </div>
+          
           <div>
-            <label for="email" class="block text-sm font-bold text-vintage-dark mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 focus:border-vintage-gold focus:ring-1 focus:ring-vintage-gold outline-none transition-colors" placeholder="your@email.com" />
+            <label for="email" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 focus:border-vintage-gold focus:bg-white focus:ring-0 outline-none transition-all duration-300 rounded-sm" placeholder="john@example.com" />
           </div>
+          
           <div>
-            <label for="message" class="block text-sm font-bold text-vintage-dark mb-2">Message</label>
-            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 focus:border-vintage-gold focus:ring-1 focus:ring-vintage-gold outline-none transition-colors" placeholder="How can we help you?"></textarea>
+             <label for="subject" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Interest</label>
+             <select id="subject" name="subject" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 focus:border-vintage-gold focus:bg-white focus:ring-0 outline-none transition-all duration-300 rounded-sm text-gray-600">
+               <option>General Inquiry</option>
+               <option>Spa Booking</option>
+               <option>Gym Membership</option>
+               <option>Private Event</option>
+             </select>
           </div>
+
+          <div>
+            <label for="message" class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Message</label>
+            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 focus:border-vintage-gold focus:bg-white focus:ring-0 outline-none transition-all duration-300 rounded-sm" placeholder="How can we help you?"></textarea>
+          </div>
+          
           <Button type="submit" class="w-full text-center">Send Message</Button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Map Placeholder -->
-  <section class="h-[400px] w-full bg-gray-200 flex items-center justify-center">
-    <p class="text-vintage-dark font-bold text-xl opacity-50">Google Maps Embed Placeholder</p>
+  <!-- FAQ Section (Before the map) -->
+  <section class="py-16 bg-white border-t border-stone-100">
+    <div class="container mx-auto max-w-4xl px-4 text-center">
+      <h3 class="text-2xl font-serif font-bold mb-8">Before you contact us...</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="p-4 border border-stone-100 rounded hover:border-vintage-gold/50 transition-colors">
+          <h4 class="font-bold text-vintage-dark mb-2">Is there parking?</h4>
+          <p class="text-sm text-gray-600">Yes, we offer complimentary valet parking for all Spa and Gym guests.</p>
+        </div>
+        <div class="p-4 border border-stone-100 rounded hover:border-vintage-gold/50 transition-colors">
+          <h4 class="font-bold text-vintage-dark mb-2">Can I book online?</h4>
+          <p class="text-sm text-gray-600">Absolutely. Use the "Book Now" button in the header for instant confirmation.</p>
+        </div>
+        <div class="p-4 border border-stone-100 rounded hover:border-vintage-gold/50 transition-colors">
+          <h4 class="font-bold text-vintage-dark mb-2">Cancellation Policy?</h4>
+          <p class="text-sm text-gray-600">We require 24 hours notice for cancellations to avoid a 50% charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map with "Vintage" styling via CSS filters -->
+  <section class="w-full h-[450px] relative bg-stone-200">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1786539269224!2d55.27078281500953!3d25.204849383892916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2sae!4v1628169213421!5m2!1sen!2sae" 
+      width="100%" 
+      height="100%" 
+      style="border:0; filter: grayscale(100%) contrast(1.2) opacity(0.8);" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+    
+    <!-- Custom Map Marker Overlay -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+       <div class="bg-vintage-dark text-white px-4 py-2 rounded shadow-lg text-sm font-bold flex flex-col items-center">
+         <span>Vintage Villa</span>
+         <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-vintage-dark mt-1"></div>
+       </div>
+    </div>
   </section>
 
   <Footer />

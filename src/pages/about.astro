@@ -3,62 +3,183 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
 
-const heroImage = "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg"; // Using one of the other images
+// Images
+const heroImage = "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg";
+const interiorImage = "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"; // Vintage interior
+const founderImage = "https://images.unsplash.com/photo-1583336137348-82136532d82b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"; // Staff 1
+const trainerImage = "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"; // Staff 2
+const chefImage = "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"; // Staff 3
 ---
 
 <Layout title="About Us | Vintage Villa and Spa">
   <Header />
 
+  <!-- Hero -->
   <Hero 
     title="Our Story"
     subtitle="Tradition Meets Luxury"
     backgroundImage={heroImage}
   />
 
-  <section class="py-20 px-4 bg-vintage-cream">
-    <div class="container mx-auto max-w-4xl">
-      <div class="prose prose-lg prose-headings:font-serif prose-headings:text-vintage-dark text-vintage-text opacity-90 mx-auto">
-        <h2 class="text-3xl font-bold mb-6 text-center">A Sanctuary for the Soul</h2>
-        <p class="mb-6">
-          Vintage Villa and Spa was born from a desire to create a retreat where time slows down. 
-          Nestled in the heart of Wellness City, we combine the elegance of classic architecture 
-          with the finest modern wellness practices.
-        </p>
-        <p class="mb-6">
-          Our philosophy is simple: holistic well-being. Whether you are lifting weights in Gym Majlis, 
-          finding serenity in our Vintage Spa, or enjoying a handcrafted brew in our coffee shop, 
-          every detail is designed to nurture your body and spirit.
-        </p>
+  <!-- The Narrative Section: Split Layout -->
+  <section class="py-24 px-4 bg-vintage-cream overflow-hidden">
+    <div class="container mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        <!-- Image Side -->
+        <div class="w-full md:w-1/2 relative group">
+          <div class="absolute top-4 -left-4 w-full h-full border-2 border-vintage-gold/30 z-0 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <img 
+            src={interiorImage} 
+            alt="Vintage Villa Interior" 
+            class="relative z-10 w-full h-[500px] object-cover shadow-xl rounded-sm"
+          />
+        </div>
+        
+        <!-- Text Side -->
+        <div class="w-full md:w-1/2">
+          <span class="text-vintage-gold uppercase tracking-[0.2em] text-sm font-semibold mb-2 block">Since 2015</span>
+          <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">A Sanctuary for the Soul</h2>
+          <div class="w-16 h-1 bg-vintage-gold mb-8"></div>
+          <p class="text-lg text-vintage-text opacity-80 leading-relaxed mb-6">
+            Vintage Villa and Spa was born from a desire to create a retreat where time slows down. 
+            Nestled in the heart of Wellness City, we combine the elegance of classic architecture 
+            with the finest modern wellness practices.
+          </p>
+          <p class="text-lg text-vintage-text opacity-80 leading-relaxed mb-8">
+            Our philosophy is simple: holistic well-being. Whether you are lifting weights in Gym Majlis, 
+            finding serenity in our Vintage Spa, or enjoying a handcrafted brew in our coffee shop, 
+            every detail is designed to nurture your body and spirit.
+          </p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" alt="Signature" class="h-12 opacity-60" />
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="py-20 px-4 bg-white">
+  <!-- Stats Banner -->
+  <section class="py-12 bg-vintage-dark text-vintage-cream border-y-4 border-vintage-gold/20">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+        <div>
+          <span class="block text-4xl md:text-5xl font-serif font-bold mb-2">10+</span>
+          <span class="text-sm uppercase tracking-widest opacity-70">Years of Service</span>
+        </div>
+        <div>
+          <span class="block text-4xl md:text-5xl font-serif font-bold mb-2">15k</span>
+          <span class="text-sm uppercase tracking-widest opacity-70">Happy Guests</span>
+        </div>
+        <div>
+          <span class="block text-4xl md:text-5xl font-serif font-bold mb-2">25</span>
+          <span class="text-sm uppercase tracking-widest opacity-70">Expert Staff</span>
+        </div>
+        <div>
+          <span class="block text-4xl md:text-5xl font-serif font-bold mb-2">3</span>
+          <span class="text-sm uppercase tracking-widest opacity-70">Luxury Spaces</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values -->
+  <section class="py-24 px-4 bg-white">
     <div class="container mx-auto">
-      <h2 class="text-3xl font-serif font-bold text-center mb-12 text-vintage-dark">Our Mission</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div class="p-6">
-          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
-            ★
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-4">Our Guiding Values</h2>
+        <p class="text-gray-600">We believe that true luxury lies in the details, and true wellness comes from a balance of body and mind.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Value 1 -->
+        <div class="p-10 bg-stone-50 text-center hover:bg-vintage-cream transition-colors duration-300 group rounded-lg border border-stone-100">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-vintage-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
           </div>
-          <h3 class="text-xl font-bold mb-4">Excellence</h3>
-          <p class="text-vintage-text opacity-80">Uncompromising quality in every service and interaction.</p>
+          <h3 class="text-xl font-serif font-bold mb-4 text-vintage-dark">Excellence</h3>
+          <p class="text-gray-600 leading-relaxed">Uncompromising quality in every service. From our equipment to our oils, we select only the premium.</p>
         </div>
-        <div class="p-6">
-          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
-            ♥
+
+        <!-- Value 2 -->
+        <div class="p-10 bg-stone-50 text-center hover:bg-vintage-cream transition-colors duration-300 group rounded-lg border border-stone-100">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-vintage-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
           </div>
-          <h3 class="text-xl font-bold mb-4">Care</h3>
-          <p class="text-vintage-text opacity-80">Personalized attention to ensure your absolute comfort.</p>
+          <h3 class="text-xl font-serif font-bold mb-4 text-vintage-dark">Compassionate Care</h3>
+          <p class="text-gray-600 leading-relaxed">Personalized attention to ensure your absolute comfort. You are not just a customer, but a guest in our home.</p>
         </div>
-        <div class="p-6">
-          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
-            ∞
+
+        <!-- Value 3 -->
+        <div class="p-10 bg-stone-50 text-center hover:bg-vintage-cream transition-colors duration-300 group rounded-lg border border-stone-100">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-vintage-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           </div>
-          <h3 class="text-xl font-bold mb-4">Serenity</h3>
-          <p class="text-vintage-text opacity-80">An atmosphere that promotes peace and relaxation.</p>
+          <h3 class="text-xl font-serif font-bold mb-4 text-vintage-dark">Timeless Serenity</h3>
+          <p class="text-gray-600 leading-relaxed">We curate an atmosphere that promotes deep peace, allowing you to disconnect from the chaos of modern life.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-24 px-4 bg-stone-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-4">Meet Our Artisans</h2>
+        <div class="w-24 h-0.5 bg-vintage-gold mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Team Member 1 -->
+        <div class="group">
+          <div class="relative overflow-hidden mb-6 rounded-sm">
+            <div class="absolute inset-0 bg-vintage-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
+            <img src={founderImage} alt="Head Therapist" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" />
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-serif font-bold text-vintage-dark">Elena Rossi</h3>
+            <p class="text-vintage-gold text-sm uppercase tracking-widest font-semibold mt-1">Head of Spa</p>
+            <p class="text-gray-500 mt-3 text-sm px-4">With 15 years in holistic therapy, Elena curates our signature treatments.</p>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="group">
+           <div class="relative overflow-hidden mb-6 rounded-sm">
+            <div class="absolute inset-0 bg-vintage-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
+            <img src={trainerImage} alt="Fitness Director" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" />
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-serif font-bold text-vintage-dark">Marcus Thorne</h3>
+            <p class="text-vintage-gold text-sm uppercase tracking-widest font-semibold mt-1">Fitness Director</p>
+            <p class="text-gray-500 mt-3 text-sm px-4">Specializing in functional strength and mobility for long-term health.</p>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="group">
+           <div class="relative overflow-hidden mb-6 rounded-sm">
+            <div class="absolute inset-0 bg-vintage-dark/20 group-hover:bg-transparent transition-colors z-10"></div>
+            <img src={chefImage} alt="Head Barista" class="w-full h-80 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" />
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-serif font-bold text-vintage-dark">Sarah Jenks</h3>
+            <p class="text-vintage-gold text-sm uppercase tracking-widest font-semibold mt-1">Nutrition & Cafe</p>
+            <p class="text-gray-500 mt-3 text-sm px-4">Creating wholesome menus that nourish the body without sacrificing flavor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-vintage-cream text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-6">Experience the Difference</h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Come visit us and see why Vintage Villa is the preferred sanctuary for those who seek the best.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/services" variant="primary">View Our Services</Button>
+        <Button href="/contact" variant="outline">Contact Us</Button>
       </div>
     </div>
   </section>

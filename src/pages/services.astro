@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
 
 const heroImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
 const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg";
@@ -18,69 +19,217 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
     backgroundImage={heroImage}
   />
 
+  <!-- Quick Navigation -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm py-4 overflow-x-auto">
+    <div class="container mx-auto flex justify-center gap-4 md:gap-12 min-w-max px-4">
+      <a href="#spa" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">The Spa</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#gym" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Gym Majlis</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#coffee" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Coffee Shop</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#faq" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Info & FAQ</a>
+    </div>
+  </nav>
+
   <!-- Spa Section -->
-  <section id="spa" class="py-12 px-4 bg-vintage-cream scroll-mt-20">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="order-2 md:order-1">
-        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Vintage Spa</h2>
-        <p class="text-lg text-vintage-text opacity-80 mb-6 leading-relaxed">
-          Rejuvenate your senses with our exclusive spa treatments. From deep tissue massages 
-          to revitalizing facials, our expert therapists use premium organic products to restore your glow.
-        </p>
-        <ul class="space-y-4 mb-8">
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Swedish Massage</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Deep Tissue Therapy</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Aromatherapy</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Signature Facials</li>
-        </ul>
-      </div>
-      <div class="order-1 md:order-2 h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
-        <img src={heroImage} alt="Spa Treatment" class="w-auto h-full max-h-[60vh] object-contain rounded-lg" />
+  <section id="spa" class="py-24 px-4 bg-vintage-cream scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Text Content -->
+        <div class="order-2 lg:order-1">
+          <span class="text-vintage-gold font-bold uppercase tracking-widest text-xs mb-2 block">Restore & Revive</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mb-6">Vintage Spa</h2>
+          <p class="text-lg text-vintage-text opacity-80 mb-8 leading-relaxed">
+            Rejuvenate your senses with our exclusive spa treatments. We blend ancient healing traditions with modern dermatology. 
+            From deep tissue massages to revitalizing facials, our expert therapists use premium organic products to restore your glow.
+          </p>
+          
+          <!-- Menu Preview Card -->
+          <div class="bg-white p-8 rounded-sm shadow-lg border border-stone-100 mb-8">
+            <h3 class="font-serif text-xl mb-6 text-center italic text-vintage-dark">Signature Treatments</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center border-b border-stone-100 pb-2">
+                <div>
+                  <span class="font-bold text-vintage-dark block">Royal Moroccan Bath</span>
+                  <span class="text-xs text-gray-500">60 Mins • Full exfoliation</span>
+                </div>
+                <span class="text-vintage-gold font-serif italic">$120</span>
+              </li>
+              <li class="flex justify-between items-center border-b border-stone-100 pb-2">
+                <div>
+                  <span class="font-bold text-vintage-dark block">Deep Tissue Massage</span>
+                  <span class="text-xs text-gray-500">90 Mins • Muscle relief</span>
+                </div>
+                <span class="text-vintage-gold font-serif italic">$150</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <div>
+                  <span class="font-bold text-vintage-dark block">Gold Radiance Facial</span>
+                  <span class="text-xs text-gray-500">45 Mins • Anti-aging</span>
+                </div>
+                <span class="text-vintage-gold font-serif italic">$95</span>
+              </li>
+            </ul>
+          </div>
+
+          <Button href="/booking?service=spa" variant="primary">Book Appointment</Button>
+        </div>
+        
+        <!-- Image -->
+        <div class="order-1 lg:order-2 relative group">
+          <div class="absolute -inset-4 border-2 border-vintage-gold/20 rounded-lg transform rotate-2 transition-transform group-hover:rotate-0 duration-500"></div>
+          <div class="relative h-[600px] overflow-hidden rounded-lg shadow-2xl">
+            <img src={heroImage} alt="Spa Treatment" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Gym Section -->
-  <section id="gym" class="py-8 px-4 bg-white scroll-mt-20">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
-        <img src={gymImage} alt="Gym Majlis" class="w-auto h-full max-h-[60vh] object-cover rounded-lg" />
-      </div>
-      <div>
-        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Gym Majlis</h2>
-        <p class="text-lg text-vintage-text opacity-80 mb-6 leading-relaxed">
-          Gym Majlis offers a premium fitness experience with state-of-the-art equipment 
-          and personalized training programs. Whether you're a beginner or an athlete, 
-          our trainers are here to guide you.
-        </p>
-        <ul class="space-y-4 mb-8">
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Personal Training</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Cardio & Strength Zones</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Group Classes</li>
-          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Nutrition Consultation</li>
-        </ul>
+  <section id="gym" class="py-24 px-4 bg-white scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Image -->
+        <div class="relative h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-2xl group">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+          <img src={gymImage} alt="Gym Majlis" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute bottom-8 left-8 z-20 text-white">
+            <p class="font-serif text-2xl italic">"Strength is timeless."</p>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div>
+          <span class="text-vintage-gold font-bold uppercase tracking-widest text-xs mb-2 block">Train & Transform</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mb-6">Gym Majlis</h2>
+          <p class="text-lg text-vintage-text opacity-80 mb-8 leading-relaxed">
+            Gym Majlis offers a premium fitness experience with state-of-the-art equipment 
+            and personalized training programs. The environment is designed to be exclusive 
+            and motivating, far removed from the crowded commercial gym experience.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark">Personal Training</h4>
+                <p class="text-sm text-gray-500">1-on-1 expert coaching</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark">24/7 Access</h4>
+                <p class="text-sm text-gray-500">For exclusive members</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark">Small Classes</h4>
+                <p class="text-sm text-gray-500">Yoga & Pilates</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-vintage-dark">Private Showers</h4>
+                <p class="text-sm text-gray-500">Luxury amenities</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+             <Button href="/membership" variant="outline">View Memberships</Button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Coffee Shop Section -->
-  <section id="coffee" class="py-12 px-4 bg-vintage-green text-vintage-cream scroll-mt-20">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="order-2 md:order-1">
-        <h2 class="text-4xl font-serif font-bold text-vintage-gold mb-6">The Coffee Shop</h2>
-        <p class="text-lg opacity-90 mb-6 leading-relaxed">
-          More than just caffeine. Our coffee shop is a social hub where you can relax 
-          after a workout or meet friends. Serving specialty coffee, herbal teas, and healthy snacks.
-        </p>
-        <ul class="space-y-4 mb-8">
-          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Artisan Espresso</li>
-          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Organic Smoothies</li>
-          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Healthy Snacks</li>
-          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Relaxing Ambiance</li>
-        </ul>
+  <section id="coffee" class="py-24 px-4 bg-vintage-green text-vintage-cream scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Text Content -->
+        <div class="order-2 lg:order-1">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="h-px w-12 bg-vintage-gold"></span>
+            <span class="text-vintage-gold font-bold uppercase tracking-widest text-xs">Taste & Socialize</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">The Coffee Shop</h2>
+          <p class="text-lg opacity-90 mb-8 leading-relaxed font-light">
+            More than just caffeine. Our coffee shop is a social hub where you can relax 
+            after a workout or meet friends. We serve single-origin specialty coffee, 
+            organic herbal teas, and a curated selection of healthy, protein-rich snacks.
+          </p>
+          
+           <!-- Menu Grid -->
+           <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-10">
+             <div>
+               <h4 class="text-vintage-gold font-serif text-xl mb-3">Brew Bar</h4>
+               <ul class="space-y-2 text-sm opacity-80">
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>Espresso</span> <span>$4</span></li>
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>V60 Pour Over</span> <span>$6</span></li>
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>Cold Brew</span> <span>$5</span></li>
+               </ul>
+             </div>
+             <div>
+               <h4 class="text-vintage-gold font-serif text-xl mb-3">Nourish</h4>
+               <ul class="space-y-2 text-sm opacity-80">
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>Acai Bowl</span> <span>$12</span></li>
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>Protein Pancakes</span> <span>$10</span></li>
+                 <li class="flex justify-between border-b border-white/10 pb-1"><span>Avocado Toast</span> <span>$9</span></li>
+               </ul>
+             </div>
+           </div>
+
+           <Button href="/menu" variant="outline" class="border-white text-white hover:bg-white hover:text-vintage-green">View Full Menu</Button>
+        </div>
+        
+        <!-- Image -->
+        <div class="order-1 lg:order-2 relative">
+          <div class="absolute inset-0 bg-vintage-gold/10 transform translate-x-4 translate-y-4 rounded-lg"></div>
+          <div class="relative h-[500px] overflow-hidden rounded-lg shadow-2xl">
+            <img src={coffeeImage} alt="Coffee Shop" class="w-full h-full object-cover" />
+          </div>
+        </div>
       </div>
-      <div class="order-1 md:order-2 h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
-        <img src={coffeeImage} alt="Coffee Shop" class="w-auto h-full max-h-[60vh] object-contain rounded-lg" />
+    </div>
+  </section>
+
+  <!-- FAQ / General Info -->
+  <section id="faq" class="py-20 px-4 bg-stone-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl font-serif font-bold text-center text-vintage-dark mb-12">Essential Information</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded shadow-sm">
+          <h3 class="text-vintage-gold font-bold uppercase tracking-wide text-sm mb-2">Dress Code</h3>
+          <p class="text-gray-600">Appropriate gym attire is required in Gym Majlis. For the Spa, we provide robes and slippers for your comfort.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow-sm">
+          <h3 class="text-vintage-gold font-bold uppercase tracking-wide text-sm mb-2">Reservation Policy</h3>
+          <p class="text-gray-600">We recommend booking spa treatments 24 hours in advance. Gym access is open to members at all times.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow-sm">
+          <h3 class="text-vintage-gold font-bold uppercase tracking-wide text-sm mb-2">Arrival Time</h3>
+          <p class="text-gray-600">Please arrive 15 minutes before your scheduled treatment to enjoy our relaxation lounge and welcome tea.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow-sm">
+          <h3 class="text-vintage-gold font-bold uppercase tracking-wide text-sm mb-2">Cancellation</h3>
+          <p class="text-gray-600">Cancellations must be made at least 4 hours prior to appointment time to avoid a 50% cancellation fee.</p>
+        </div>
       </div>
     </div>
   </section>

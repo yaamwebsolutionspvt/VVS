@@ -3,17 +3,60 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import GalleryGrid from '../components/GalleryGrid.astro';
 
 const heroImage = "https://storage.eduyaam.com/uploads/20260123052401_5b63d73a-3bc2-45a3-896e-baca4ace8347.jpg";
 
-const images = [
-  { src: "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg", alt: "Main Pool Area" },
-  { src: "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg", alt: "Spa Interior" },
-  { src: "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg", alt: "Coffee Shop Details" },
-  { src: "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg", alt: "Gym Equipment" },
-  { src: "https://storage.eduyaam.com/uploads/20260123052401_5b63d73a-3bc2-45a3-896e-baca4ace8347.jpg", alt: "Lounge Area" },
-  { src: "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg", alt: "Entrance View" }
+// Enhanced Image Data with Categories
+const galleryItems = [
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260124033937_20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg", 
+    alt: "Main Pool Area", 
+    category: "spa",
+    caption: "Serenity Pool at Sunset" 
+  },
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg", 
+    alt: "Spa Interior", 
+    category: "spa",
+    caption: "Private Treatment Suite" 
+  },
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg", 
+    alt: "Coffee Shop Details", 
+    category: "social",
+    caption: "Artisan Brews" 
+  },
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg", 
+    alt: "Gym Equipment", 
+    category: "gym",
+    caption: "State-of-the-art Equipment" 
+  },
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260123052401_5b63d73a-3bc2-45a3-896e-baca4ace8347.jpg", 
+    alt: "Lounge Area", 
+    category: "social",
+    caption: "The Members Lounge" 
+  },
+  { 
+    src: "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg", 
+    alt: "Entrance View", 
+    category: "exterior",
+    caption: "Grand Entrance" 
+  },
+  // Duplicating a few to show off masonry effect better (in a real app, use unique images)
+  { 
+    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3", 
+    alt: "Spa Detail", 
+    category: "spa",
+    caption: "Aromatherapy Oils" 
+  },
+  { 
+    src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3", 
+    alt: "Gym Weights", 
+    category: "gym",
+    caption: "Free Weights Zone" 
+  }
 ];
 ---
 
@@ -21,21 +64,148 @@ const images = [
   <Header />
 
   <Hero 
-    title="Our Gallery"
+    title="Visual Journey"
     subtitle="A Glimpse into Paradise"
     backgroundImage={heroImage}
   />
 
-  <section class="py-20 px-4 bg-vintage-cream text-center">
+  <section class="py-20 px-4 bg-vintage-cream min-h-screen">
     <div class="container mx-auto">
-      <p class="max-w-2xl mx-auto text-lg text-vintage-text opacity-80 mb-12">
-        Explore the visual journey of Vintage Villa. From our serene spa rooms to the energizing gym floor, 
-        every corner is crafted for your experience.
-      </p>
       
-      <GalleryGrid images={images} />
+      <!-- Intro Text -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="text-xl font-serif text-vintage-dark leading-relaxed">
+          Every corner of Vintage Villa is designed to inspire. From the architectural 
+          elegance of our exteriors to the calming ambiance of our treatment rooms.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12" id="gallery-filters">
+        <button class="filter-btn active px-6 py-2 border border-vintage-gold bg-vintage-gold text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="all">All Moments</button>
+        <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="spa">The Spa</button>
+        <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="gym">Gym Majlis</button>
+        <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="social">Social & Cafe</button>
+      </div>
+      
+      <!-- Masonry Grid -->
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-grid">
+        {galleryItems.map((item) => (
+          <div class="gallery-item break-inside-avoid relative group overflow-hidden rounded-sm cursor-pointer shadow-md hover:shadow-xl transition-all duration-300" data-category={item.category} onclick={`openLightbox('${item.src}', '${item.caption}')`}>
+            <img 
+              src={item.src} 
+              alt={item.alt} 
+              class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-110" 
+              loading="lazy"
+            />
+            <!-- Overlay on Hover -->
+            <div class="absolute inset-0 bg-vintage-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <span class="text-vintage-gold text-xs uppercase tracking-widest block mb-2">{item.category}</span>
+                <p class="text-white font-serif text-xl italic">"{item.caption}"</p>
+                <div class="mt-4 inline-block p-2 border border-white/30 rounded-full text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   </section>
 
+  <!-- Parallax Break Section -->
+  <section class="relative h-[60vh] bg-fixed bg-center bg-cover flex items-center justify-center" style={`background-image: url(${galleryItems[1].src})`}>
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 text-center px-4">
+      <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Experience It Live</h2>
+      <a href="/contact" class="inline-block px-10 py-4 bg-white text-vintage-dark font-sans font-bold uppercase tracking-wider hover:bg-vintage-gold hover:text-white transition-all">
+        Book a Tour
+      </a>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal (Hidden by default) -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center opacity-0 transition-opacity duration-300">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-vintage-gold z-50">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <div class="max-w-5xl max-h-screen p-4 relative text-center">
+      <img id="lightbox-img" src="" alt="Full screen" class="max-h-[85vh] max-w-full object-contain mx-auto shadow-2xl border-4 border-white/10" />
+      <p id="lightbox-caption" class="text-vintage-gold font-serif text-xl mt-4 tracking-wide"></p>
+    </div>
+  </div>
+
   <Footer />
 </Layout>
+
+<!-- Client-side Scripts for Filtering and Lightbox -->
+<script is:inline>
+  // Filter Logic
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-vintage-gold', 'text-white', 'border-vintage-gold');
+        b.classList.add('text-vintage-dark', 'border-vintage-dark');
+      });
+      // Add active class to clicked
+      btn.classList.remove('text-vintage-dark', 'border-vintage-dark');
+      btn.classList.add('bg-vintage-gold', 'text-white', 'border-vintage-gold');
+
+      const category = btn.getAttribute('data-filter');
+
+      galleryItems.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+          // Small timeout to allow display block to render before opacity for fade effect
+          setTimeout(() => item.style.opacity = '1', 10);
+        } else {
+          item.style.opacity = '0';
+          setTimeout(() => item.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+
+  // Lightbox Logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  window.openLightbox = (src, caption) => {
+    lightboxImg.src = src;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.remove('hidden');
+    // Trigger reflow
+    void lightbox.offsetWidth;
+    lightbox.classList.remove('opacity-0');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling background
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.add('opacity-0');
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+      document.body.style.overflow = ''; // Restore scrolling
+    }, 300);
+  };
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  
+  // Close on clicking outside image
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
