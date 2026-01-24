@@ -1,0 +1,54 @@
+---
+---
+
+<header class="bg-vintage-green text-vintage-cream sticky top-0 z-50 shadow-md">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <!-- Logo -->
+    <a href="/" class="block hover:opacity-90 transition-opacity">
+      <img 
+        src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
+        alt="Vintage Villa & Spa" 
+        class="h-24 md:h-32 w-auto object-contain rounded-sm"
+      />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-8 font-sans font-medium">
+      <a href="/" class="hover:text-vintage-gold transition-colors">Home</a>
+      <a href="/about" class="hover:text-vintage-gold transition-colors">About</a>
+      <a href="/services" class="hover:text-vintage-gold transition-colors">Services</a>
+      <a href="/gallery" class="hover:text-vintage-gold transition-colors">Gallery</a>
+      <a href="/contact" class="hover:text-vintage-gold transition-colors">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="md:hidden text-vintage-cream focus:outline-none" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="hidden md:hidden bg-vintage-green border-t border-vintage-gold/20">
+    <nav class="flex flex-col p-4 space-y-4 font-sans text-center">
+      <a href="/" class="block py-2 hover:text-vintage-gold">Home</a>
+      <a href="/about" class="block py-2 hover:text-vintage-gold">About</a>
+      <a href="/services" class="block py-2 hover:text-vintage-gold">Services</a>
+      <a href="/gallery" class="block py-2 hover:text-vintage-gold">Gallery</a>
+      <a href="/contact" class="block py-2 hover:text-vintage-gold">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

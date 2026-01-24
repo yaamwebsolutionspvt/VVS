@@ -1,0 +1,103 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+  category?: string;
+}
+
+interface Props {
+  images: Image[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+  {images.map((img, index) => (
+    <div class="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid" onclick={`openLightbox(${index})`}>
+      <img 
+        src={img.src} 
+        alt={img.alt} 
+        class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <span class="text-white font-sans text-sm tracking-widest uppercase border border-white px-4 py-2">View</span>
+      </div>
+    </div>
+  ))}
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden flex items-center justify-center p-4">
+  <button id="close-lightbox" class="absolute top-4 right-4 text-white hover:text-vintage-gold">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  
+  <button id="prev-btn" class="absolute left-4 text-white hover:text-vintage-gold hidden md:block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  
+  <img id="lightbox-img" src="" alt="Gallery Image" class="max-w-[90vw] max-h-[80vh] shadow-2xl object-contain" />
+  
+  <button id="next-btn" class="absolute right-4 text-white hover:text-vintage-gold hidden md:block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  
+  window.openLightbox = (index) => {
+    currentIndex = index;
+    updateImage();
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  const nextImage = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+  };
+
+  const prevImage = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+  };
+
+  const updateImage = () => {
+    lightboxImg.src = images[currentIndex].src;
+    lightboxImg.alt = images[currentIndex].alt;
+  };
+
+  document.getElementById('close-lightbox')?.addEventListener('click', closeLightbox);
+  document.getElementById('next-btn')?.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+  document.getElementById('prev-btn')?.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+  
+  // Close on outside click
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('hidden')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    }
+  });
+</script>

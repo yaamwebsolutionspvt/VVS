@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+
+const heroImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
+const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg";
+const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
+---
+
+<Layout title="Services | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Our Services"
+    subtitle="Holistic Wellness"
+    backgroundImage={heroImage}
+  />
+
+  <!-- Spa Section -->
+  <section id="spa" class="py-12 px-4 bg-vintage-cream scroll-mt-20">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Vintage Spa</h2>
+        <p class="text-lg text-vintage-text opacity-80 mb-6 leading-relaxed">
+          Rejuvenate your senses with our exclusive spa treatments. From deep tissue massages 
+          to revitalizing facials, our expert therapists use premium organic products to restore your glow.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Swedish Massage</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Deep Tissue Therapy</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Aromatherapy</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Signature Facials</li>
+        </ul>
+      </div>
+      <div class="order-1 md:order-2 h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
+        <img src={heroImage} alt="Spa Treatment" class="w-auto h-full max-h-[60vh] object-contain rounded-lg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gym Section -->
+  <section id="gym" class="py-8 px-4 bg-white scroll-mt-20">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
+        <img src={gymImage} alt="Gym Majlis" class="w-auto h-full max-h-[60vh] object-cover rounded-lg" />
+      </div>
+      <div>
+        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Gym Majlis</h2>
+        <p class="text-lg text-vintage-text opacity-80 mb-6 leading-relaxed">
+          Gym Majlis offers a premium fitness experience with state-of-the-art equipment 
+          and personalized training programs. Whether you're a beginner or an athlete, 
+          our trainers are here to guide you.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Personal Training</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Cardio & Strength Zones</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Group Classes</li>
+          <li class="flex items-center text-vintage-text"><span class="text-vintage-gold mr-3">✦</span> Nutrition Consultation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee Shop Section -->
+  <section id="coffee" class="py-12 px-4 bg-vintage-green text-vintage-cream scroll-mt-20">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="order-2 md:order-1">
+        <h2 class="text-4xl font-serif font-bold text-vintage-gold mb-6">The Coffee Shop</h2>
+        <p class="text-lg opacity-90 mb-6 leading-relaxed">
+          More than just caffeine. Our coffee shop is a social hub where you can relax 
+          after a workout or meet friends. Serving specialty coffee, herbal teas, and healthy snacks.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Artisan Espresso</li>
+          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Organic Smoothies</li>
+          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Healthy Snacks</li>
+          <li class="flex items-center"><span class="text-vintage-gold mr-3">✦</span> Relaxing Ambiance</li>
+        </ul>
+      </div>
+      <div class="order-1 md:order-2 h-auto max-h-[60vh] flex justify-center overflow-hidden shadow-xl rounded-lg">
+        <img src={coffeeImage} alt="Coffee Shop" class="w-auto h-full max-h-[60vh] object-contain rounded-lg" />
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

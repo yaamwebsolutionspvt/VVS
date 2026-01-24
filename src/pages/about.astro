@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+
+const heroImage = "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg"; // Using one of the other images
+---
+
+<Layout title="About Us | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Our Story"
+    subtitle="Tradition Meets Luxury"
+    backgroundImage={heroImage}
+  />
+
+  <section class="py-20 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl">
+      <div class="prose prose-lg prose-headings:font-serif prose-headings:text-vintage-dark text-vintage-text opacity-90 mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center">A Sanctuary for the Soul</h2>
+        <p class="mb-6">
+          Vintage Villa and Spa was born from a desire to create a retreat where time slows down. 
+          Nestled in the heart of Wellness City, we combine the elegance of classic architecture 
+          with the finest modern wellness practices.
+        </p>
+        <p class="mb-6">
+          Our philosophy is simple: holistic well-being. Whether you are lifting weights in Gym Majlis, 
+          finding serenity in our Vintage Spa, or enjoying a handcrafted brew in our coffee shop, 
+          every detail is designed to nurture your body and spirit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-serif font-bold text-center mb-12 text-vintage-dark">Our Mission</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-6">
+          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
+            ★
+          </div>
+          <h3 class="text-xl font-bold mb-4">Excellence</h3>
+          <p class="text-vintage-text opacity-80">Uncompromising quality in every service and interaction.</p>
+        </div>
+        <div class="p-6">
+          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
+            ♥
+          </div>
+          <h3 class="text-xl font-bold mb-4">Care</h3>
+          <p class="text-vintage-text opacity-80">Personalized attention to ensure your absolute comfort.</p>
+        </div>
+        <div class="p-6">
+          <div class="w-16 h-16 bg-vintage-gold rounded-full flex items-center justify-center mx-auto mb-6 text-vintage-dark text-2xl">
+            ∞
+          </div>
+          <h3 class="text-xl font-bold mb-4">Serenity</h3>
+          <p class="text-vintage-text opacity-80">An atmosphere that promotes peace and relaxation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

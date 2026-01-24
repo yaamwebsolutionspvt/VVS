@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+const heroImage = "https://storage.eduyaam.com/uploads/20260123052401_5b63d73a-3bc2-45a3-896e-baca4ace8347.jpg";
+
+const images = [
+  { src: "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg", alt: "Main Pool Area" },
+  { src: "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg", alt: "Spa Interior" },
+  { src: "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg", alt: "Coffee Shop Details" },
+  { src: "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg", alt: "Gym Equipment" },
+  { src: "https://storage.eduyaam.com/uploads/20260123052401_5b63d73a-3bc2-45a3-896e-baca4ace8347.jpg", alt: "Lounge Area" },
+  { src: "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg", alt: "Entrance View" }
+];
+---
+
+<Layout title="Gallery | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Our Gallery"
+    subtitle="A Glimpse into Paradise"
+    backgroundImage={heroImage}
+  />
+
+  <section class="py-20 px-4 bg-vintage-cream text-center">
+    <div class="container mx-auto">
+      <p class="max-w-2xl mx-auto text-lg text-vintage-text opacity-80 mb-12">
+        Explore the visual journey of Vintage Villa. From our serene spa rooms to the energizing gym floor, 
+        every corner is crafted for your experience.
+      </p>
+      
+      <GalleryGrid images={images} />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

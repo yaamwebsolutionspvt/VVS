@@ -1,11 +1,78 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const heroImage = "https://storage.eduyaam.com/uploads/20260124033937_20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg";
+const spaImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
+const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg?v=1";
+const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Vintage Villa and Spa | Luxury Wellness Center">
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Sanctuary of Serenity"
+      subtitle="Welcome to Vintage Villa"
+      backgroundImage={heroImage}
+      ctaText="Explore Services"
+      ctaLink="/services"
+    />
+
+    <!-- Intro Section -->
+    <section class="py-20 px-4 bg-vintage-cream text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-6">Timeless Luxury & Modern Wellness</h2>
+        <p class="text-lg text-vintage-text opacity-80 leading-relaxed mb-8">
+          Escape the ordinary and immerse yourself in a world of relaxation. 
+          At Vintage Villa, we blend traditional healing with modern fitness 
+          to rejuvenate your mind, body, and soul.
+        </p>
+        <Button href="/about" variant="outline">Our Story</Button>
+      </div>
+    </section>
+
+    <!-- Services Teaser -->
+    <section class="py-20 px-4 bg-white">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-4">Our Experiences</h2>
+          <div class="w-24 h-1 bg-vintage-gold mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card title="Vintage Spa" image={spaImage} href="/services#spa">
+            <p>Indulge in our signature treatments, massages, and facials designed to restore your inner balance.</p>
+          </Card>
+          <Card title="Gym Majlis" image={gymImage} href="/services#gym">
+            <p>State-of-the-art equipment in a sophisticated environment for your fitness journey.</p>
+          </Card>
+          <Card title="Coffee Shop" image={coffeeImage} href="/services#coffee">
+            <p>Artisan coffee and healthy bites to fuel your day or relax after a workout.</p>
+          </Card>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Quote -->
+    <section class="py-24 px-4 bg-vintage-green text-vintage-cream text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <svg class="w-12 h-12 text-vintage-gold mx-auto mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21L14.017 18C14.017 16.0547 15.372 15.5508 16.3076 15.5508C17.4331 15.5508 19 16.2949 19 18C19 18.2578 19 21 19 21H23V18C23 14.1621 19.5391 12 16.3076 12C14.7715 12 14.017 12 14.017 12V9C14.017 9 14.7246 9 16.1201 9C19.7246 9 22 6.64258 22 2H18C18 3.55469 16.9248 4 16.1201 4C14.8682 4 14.017 2.94922 14.017 2H10V12H6.98291C8.51855 12 9.27344 12 9.27344 12V15C9.27344 15 8.56641 15 7.1709 15C3.56641 15 1.29102 17.3574 1.29102 22H5.29102C5.29102 20.4453 6.36621 20 7.1709 20C8.42188 20 9.27344 21.0508 9.27344 21H14.017Z" />
+        </svg>
+        <blockquote class="text-2xl md:text-3xl font-serif italic leading-relaxed mb-6">
+          "A truly magical place. The spa treatments are world-class and the atmosphere is simply breathtaking."
+        </blockquote>
+        <cite class="text-vintage-gold font-sans uppercase tracking-widest not-italic">- Sarah Mitchell, Regular Guest</cite>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
 </Layout>

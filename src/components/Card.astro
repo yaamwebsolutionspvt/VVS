@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  image?: string;
+  href?: string;
+  class?: string;
+}
+
+const { title, image, href, class: className } = Astro.props;
+---
+
+<div class={`bg-white shadow-lg overflow-hidden group ${className || ''}`}>
+  {image && (
+    <div class="h-64 overflow-hidden">
+      <img 
+        src={image} 
+        alt={title} 
+        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+      />
+    </div>
+  )}
+  <div class="p-8 text-center">
+    <h3 class="text-2xl font-serif font-bold text-vintage-dark mb-4">{title}</h3>
+    <div class="text-vintage-text opacity-80 mb-6 font-sans">
+      <slot />
+    </div>
+    {href && (
+      <a href={href} class="text-vintage-green font-bold uppercase text-sm tracking-widest hover:text-vintage-gold transition-colors">
+        Learn More
+      </a>
+    )}
+  </div>
+</div>

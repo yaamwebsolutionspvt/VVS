@@ -1,0 +1,32 @@
+---
+interface Props {
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  variant?: "primary" | "outline" | "text";
+  class?: string;
+}
+
+const { href, type = "button", variant = "primary", class: className } = Astro.props;
+
+const baseStyles = "inline-block px-6 py-2 font-sans font-bold uppercase tracking-wider transition-all duration-300";
+
+const variants = {
+  primary: "bg-vintage-gold text-vintage-dark hover:bg-vintage-dark hover:text-vintage-gold",
+  outline: "border-2 border-vintage-gold text-vintage-gold hover:bg-vintage-gold hover:text-vintage-dark",
+  text: "text-vintage-gold hover:text-vintage-dark underline-offset-4 hover:underline"
+};
+
+const styles = `${baseStyles} ${variants[variant]} ${className || ''}`;
+---
+
+{
+  href ? (
+    <a href={href} class={styles}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={styles}>
+      <slot />
+    </button>
+  )
+}
