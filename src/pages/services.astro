@@ -4,8 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
 
-const heroImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+
+const heroImage = "https://res.cloudinary.com/dw1sh368y/image/upload/v1769238913/Lobby_x9c4ks.png";
 const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg";
 const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
 ---
@@ -73,7 +77,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
             </ul>
           </div>
 
-          <Button href="/booking?service=spa" variant="primary">Book Appointment</Button>
+          <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary">Book Appointment</Button>
         </div>
         
         <!-- Image -->
@@ -113,7 +117,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
           <div class="grid grid-cols-2 gap-6 mb-8">
             <div class="flex items-start gap-3">
               <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <ReactIcon name="RiFlashlightLine" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark">Personal Training</h4>
@@ -122,7 +126,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
             </div>
             <div class="flex items-start gap-3">
               <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <ReactIcon name="RiMoonClearLine" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark">24/7 Access</h4>
@@ -131,7 +135,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
             </div>
             <div class="flex items-start gap-3">
               <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <ReactIcon name="RiTeamLine" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark">Small Classes</h4>
@@ -140,7 +144,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
             </div>
             <div class="flex items-start gap-3">
               <div class="bg-vintage-cream p-2 rounded-full text-vintage-gold">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <ReactIcon name="HiOutlineCheckBadge" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark">Private Showers</h4>

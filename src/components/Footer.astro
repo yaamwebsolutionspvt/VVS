@@ -1,19 +1,23 @@
 ---
+import ReactIcon from "./ReactIcon.jsx";
+
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
 ---
 
-<footer class="bg-vintage-dark text-vintage-cream py-12 mt-auto">
-  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer class="bg-vintage-sand text-vintage-dark py-20 mt-auto">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
     <!-- Brand -->
-    <div>
-      <a href="/" class="block mb-4 inline-block">
+    <div class="space-y-6">
+      <a href="/" class="block inline-block group">
         <img 
           src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
           alt="Vintage Villa & Spa" 
-          class="h-24 md:h-32 w-auto object-contain rounded-sm mb-2"
+          class="h-28 md:h-36 w-auto object-contain rounded-sm mb-4"
         />
-        <span class="text-xl font-serif font-bold text-vintage-gold">Vintage Villa & Spa</span>
+        <span class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white drop-shadow-lg group-hover:text-vintage-gold transition-colors tracking-tight block">Vintage Villa & Spa</span>
       </a>
-      <p class="font-sans text-sm opacity-80 leading-relaxed">
+      <p class="font-sans text-lg opacity-90 leading-relaxed max-w-sm">
         Experience the perfect blend of luxury, wellness, and tradition. 
         Your sanctuary for relaxation and fitness.
       </p>
@@ -21,32 +25,45 @@
 
     <!-- Quick Links -->
     <div>
-      <h4 class="text-lg font-serif font-bold mb-4 text-white">Quick Links</h4>
-      <ul class="space-y-2 font-sans text-sm opacity-80">
-        <li><a href="/services#spa" class="hover:text-vintage-gold">Vintage Spa</a></li>
-        <li><a href="/services#gym" class="hover:text-vintage-gold">Gym Majlis</a></li>
-        <li><a href="/services#coffee" class="hover:text-vintage-gold">Coffee Shop</a></li>
-        <li><a href="/contact" class="hover:text-vintage-gold">Book Appointment</a></li>
+      <h4 class="text-xl font-serif font-bold mb-8 text-vintage-dark uppercase tracking-[0.2em]">Quick Links</h4>
+      <ul class="space-y-4 font-sans text-lg">
+        <li><a href="/services#spa" class="text-vintage-text hover:text-white transition-colors">Vintage Spa</a></li>
+        <li><a href="/services#gym" class="text-vintage-text hover:text-white transition-colors">Gym Majlis</a></li>
+        <li><a href="/services#coffee" class="text-vintage-text hover:text-white transition-colors">Coffee Shop</a></li>
+        <li><a href={waLink} target="_blank" rel="noopener noreferrer" class="text-vintage-text hover:text-white transition-colors font-bold">Book Appointment</a></li>
       </ul>
     </div>
 
     <!-- Contact -->
     <div>
-      <h4 class="text-lg font-serif font-bold mb-4 text-white">Contact Us</h4>
-      <div class="space-y-2 font-sans text-sm opacity-80">
+      <h4 class="text-xl font-serif font-bold mb-8 text-vintage-dark uppercase tracking-[0.2em]">Contact Us</h4>
+      <div class="space-y-4 font-sans text-lg text-vintage-text">
         <p>123 Luxury Lane, Wellness City</p>
-        <p>Phone: +123 456 7890</p>
-        <p>Email: info@vintagevilla.com</p>
-        <div class="flex space-x-4 mt-4 text-vintage-gold">
-          <!-- Social Icons Placeholder -->
-          <a href="#" aria-label="Facebook" class="hover:text-white">FB</a>
-          <a href="#" aria-label="Instagram" class="hover:text-white">IG</a>
-          <a href="#" aria-label="Twitter" class="hover:text-white">TW</a>
+        <p>Phone: <a href={`tel:${phoneNumber}`} class="hover:text-white">+91 {phoneNumber}</a></p>
+        <p>Email: <a href="mailto:info@vintagevilla.com" class="hover:text-white">info@vintagevilla.com</a></p>
+        <div class="flex space-x-4 mt-8 flex-wrap">
+          <!-- Social Icons -->
+          <a href="#" aria-label="Facebook" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
+            <ReactIcon name="FaFacebookF" size={22} />
+          </a>
+          <a href="#" aria-label="Instagram" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
+            <ReactIcon name="FaInstagram" size={22} />
+          </a>
+          <a href={waLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
+            <ReactIcon name="FaWhatsapp" size={22} />
+          </a>
+          <a href="#" aria-label="Twitter" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
+            <ReactIcon name="FaXTwitter" size={22} />
+          </a>
         </div>
       </div>
     </div>
   </div>
-  <div class="border-t border-white/10 mt-12 pt-6 text-center text-xs font-sans opacity-60">
-    &copy; {new Date().getFullYear()} Vintage Villa and Spa. All rights reserved.
+  <div class="border-t border-vintage-dark/10 mt-16 pt-8 text-center text-sm font-sans opacity-60">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
+      <p>Crafted with ❤️ by <a href="https://yaamwebsolutions.com" rel="noopener noreferrer" target="_blank" class="text-vintage-dark font-bold hover:text-white transition-colors">Yaam Web Solutions</a></p>
+      <span class="hidden md:inline text-vintage-dark/30">|</span>
+      <span>&copy; {new Date().getFullYear()} Vintage Villa and Spa. All rights reserved.</span>
+    </div>
   </div>
 </footer>

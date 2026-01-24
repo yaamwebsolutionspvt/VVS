@@ -1,54 +1,135 @@
 ---
+import ReactIcon from "./ReactIcon.jsx";
 ---
 
-<header class="bg-vintage-green text-vintage-cream sticky top-0 z-50 shadow-md">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Logo -->
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 text-vintage-dark">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center transition-all duration-500" id="header-container">
     <!-- Logo -->
     <a href="/" class="block hover:opacity-90 transition-opacity">
       <img 
         src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
         alt="Vintage Villa & Spa" 
-        class="h-24 md:h-32 w-auto object-contain rounded-sm"
+        class="h-24 md:h-32 w-auto object-contain rounded-sm transition-all duration-500"
+        id="header-logo"
       />
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex space-x-8 font-sans font-medium">
-      <a href="/" class="hover:text-vintage-gold transition-colors">Home</a>
-      <a href="/about" class="hover:text-vintage-gold transition-colors">About</a>
-      <a href="/services" class="hover:text-vintage-gold transition-colors">Services</a>
-      <a href="/gallery" class="hover:text-vintage-gold transition-colors">Gallery</a>
-      <a href="/contact" class="hover:text-vintage-gold transition-colors">Contact</a>
+    <nav class="hidden md:flex space-x-8 font-sans font-bold text-lg" id="desktop-nav">
+      <a href="/" class="nav-link transition-all duration-500">Home</a>
+      <a href="/about" class="nav-link transition-all duration-500">About</a>
+      <a href="/services" class="nav-link transition-all duration-500">Services</a>
+      <a href="/gallery" class="nav-link transition-all duration-500">Gallery</a>
+      <a href="/contact" class="nav-link transition-all duration-500">Contact</a>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden text-vintage-cream focus:outline-none" aria-label="Toggle Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+    <button id="mobile-menu-btn" class="md:hidden z-[100] text-vintage-gold focus:outline-none p-4" aria-label="Toggle Menu">
+      <div id="hamburger-icon" class="block">
+        <ReactIcon name="HiMenuAlt3" size={32} />
+      </div>
+      <div id="close-icon" class="hidden">
+        <ReactIcon name="HiXMark" size={32} />
+      </div>
     </button>
   </div>
 
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="hidden md:hidden bg-vintage-green border-t border-vintage-gold/20">
-    <nav class="flex flex-col p-4 space-y-4 font-sans text-center">
-      <a href="/" class="block py-2 hover:text-vintage-gold">Home</a>
-      <a href="/about" class="block py-2 hover:text-vintage-gold">About</a>
-      <a href="/services" class="block py-2 hover:text-vintage-gold">Services</a>
-      <a href="/gallery" class="block py-2 hover:text-vintage-gold">Gallery</a>
-      <a href="/contact" class="block py-2 hover:text-vintage-gold">Contact</a>
+  <!-- Mobile Drawer Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-vintage-dark/98 z-[90] translate-x-full transition-transform duration-500 flex items-center justify-center pointer-events-none md:hidden">
+    <nav class="flex flex-col space-y-4 w-full px-8 text-center">
+      <a href="/" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Home</a>
+      <a href="/about" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">About</a>
+      <a href="/services" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Services</a>
+      <a href="/gallery" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Gallery</a>
+      <a href="/contact" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Contact</a>
     </nav>
   </div>
 </header>
 
 <script>
+  const header = document.getElementById('main-header');
+  const headerContainer = document.getElementById('header-container');
+  const headerLogo = document.getElementById('header-logo');
+  const desktopNavLinks = document.querySelectorAll('#desktop-nav .nav-link');
   const btn = document.getElementById('mobile-menu-btn');
+  const hamburger = document.getElementById('hamburger');
   const menu = document.getElementById('mobile-menu');
+  const body = document.body;
 
+  // Scroll logic
+  const handleScroll = () => {
+    const isScrolled = window.scrollY > 50;
+    
+    if (isScrolled) {
+      header.classList.add('bg-vintage-sand', 'shadow-md');
+      headerContainer.classList.remove('py-4');
+      headerContainer.classList.add('py-2');
+      headerLogo.classList.remove('h-24', 'md:h-32');
+      headerLogo.classList.add('h-16', 'md:h-20');
+      
+      // Update nav link colors for contrast on sand
+      desktopNavLinks.forEach(link => {
+        link.classList.remove('text-vintage-gold');
+        link.classList.add('text-vintage-dark');
+      });
+      // Update mobile button color
+      btn.classList.remove('text-vintage-gold');
+      btn.classList.add('text-vintage-dark');
+    } else {
+      header.classList.remove('bg-vintage-sand', 'shadow-md');
+      headerContainer.classList.remove('py-2');
+      headerContainer.classList.add('py-4');
+      headerLogo.classList.remove('h-16', 'md:h-20');
+      headerLogo.classList.add('h-24', 'md:h-32');
+
+      // Revert to gold for transparent state (visible on dark heroes)
+      desktopNavLinks.forEach(link => {
+        link.classList.remove('text-vintage-dark');
+        link.classList.add('text-vintage-gold');
+      });
+      // Revert mobile button color
+      btn.classList.remove('text-vintage-dark');
+      btn.classList.add('text-vintage-gold');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  // Mobile menu toggle
   if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    let isOpen = false;
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    const toggleMenu = () => {
+      isOpen = !isOpen;
+      
+      if (isOpen) {
+        menu.classList.remove('translate-x-full', 'pointer-events-none');
+        menu.classList.add('translate-x-0', 'pointer-events-auto');
+        body.style.overflow = 'hidden';
+        
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        menu.classList.add('translate-x-full', 'pointer-events-none');
+        menu.classList.remove('translate-x-0', 'pointer-events-auto');
+        body.style.overflow = '';
+        
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (isOpen) toggleMenu();
+      });
     });
   }
 </script>

@@ -4,8 +4,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
 
-const heroImage = "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg";
+const phoneNumber = "8492984991";
+
+const heroImage = "https://res.cloudinary.com/dw1sh368y/image/upload/v1769162798/Gemini_Generated_Image_nzfjtenzfjtenzfj_tpkz79.png";
 ---
 
 <Layout title="Contact Us | Vintage Villa and Spa">
@@ -39,7 +42,7 @@ const heroImage = "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4
           <div class="space-y-6">
             <div class="flex items-start group">
               <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <ReactIcon name="HiMapPin" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark font-serif">Address</h4>
@@ -49,17 +52,17 @@ const heroImage = "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4
             
             <div class="flex items-start group">
               <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <ReactIcon name="HiPhone" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark font-serif">Phone</h4>
-                <p class="text-sm text-gray-600 mt-1 hover:text-vintage-gold transition-colors"><a href="tel:+1234567890">+1 (234) 567 890</a></p>
+                <p class="text-sm text-gray-600 mt-1 hover:text-vintage-gold transition-colors"><a href={`tel:${phoneNumber}`}>+91 {phoneNumber}</a></p>
               </div>
             </div>
             
             <div class="flex items-start group">
               <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-vintage-gold shadow-sm mr-4 group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                <ReactIcon name="HiEnvelope" size={20} />
               </div>
               <div>
                 <h4 class="font-bold text-vintage-dark font-serif">Email</h4>
@@ -158,7 +161,7 @@ const heroImage = "https://storage.eduyaam.com/uploads/20260123052436_3402059d-4
   <!-- Interactive Map with "Vintage" styling via CSS filters -->
   <section class="w-full h-[450px] relative bg-stone-200">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1786539269224!2d55.27078281500953!3d25.204849383892916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai!5e0!3m2!1sen!2sae!4v1628169213421!5m2!1sen!2sae" 
+      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3311.26621038404!2d75.27135287571035!3d33.90854747321146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDU0JzMwLjgiTiA3NcKwMTYnMjYuMSJF!5e0!3m2!1sen!2sin!4v1769240605402!5m2!1sen!2sin" 
       width="100%" 
       height="100%" 
       style="border:0; filter: grayscale(100%) contrast(1.2) opacity(0.8);" 

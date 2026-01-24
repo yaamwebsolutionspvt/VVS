@@ -5,11 +5,15 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
 import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
 
-const heroImage = "https://storage.eduyaam.com/uploads/20260124033937_20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg";
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+
+const heroImage = "https://res.cloudinary.com/dw1sh368y/image/upload/v1769162798/Gemini_Generated_Image_nzfjtenzfjtenzfj_tpkz79.png";
 const spaImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
 const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg?v=1";
-const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
+const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png";
 ---
 
 <Layout title="Vintage Villa and Spa | Luxury Wellness Center">
@@ -38,7 +42,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href="/about" variant="outline">Our Story</Button>
-          <Button href="/booking" variant="primary">Book an Appointment</Button>
+          <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary">Book an Appointment</Button>
         </div>
       </div>
     </section>
@@ -50,7 +54,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
           <!-- Feature 1 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+              <ReactIcon name="RiMedalLine" size={32} />
             </div>
             <h3 class="font-serif text-xl font-bold mb-2">Expert Therapists</h3>
             <p class="text-sm text-gray-600">Certified professionals dedicated to your wellbeing.</p>
@@ -58,7 +62,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
           <!-- Feature 2 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+              <ReactIcon name="RiHotelBedLine" size={32} />
             </div>
             <h3 class="font-serif text-xl font-bold mb-2">Private Suites</h3>
             <p class="text-sm text-gray-600">Exclusive rooms for complete privacy and calm.</p>
@@ -66,7 +70,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
           <!-- Feature 3 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <ReactIcon name="RiLeafLine" size={32} />
             </div>
             <h3 class="font-serif text-xl font-bold mb-2">Organic Products</h3>
             <p class="text-sm text-gray-600">Sustainable, cruelty-free premium oils and lotions.</p>
@@ -74,7 +78,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
           <!-- Feature 4 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <ReactIcon name="FaVenus" size={32} />
             </div>
             <h3 class="font-serif text-xl font-bold mb-2">Ladies Only Hours</h3>
             <p class="text-sm text-gray-600">Dedicated times for comfort and privacy.</p>
@@ -95,15 +99,12 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           <Card title="Vintage Spa" image={spaImage} href="/services#spa" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">Indulge in our signature treatments, massages, and facials designed to restore your inner balance.</p>
-            <span class="text-vintage-gold font-bold text-sm uppercase tracking-wide group-hover:underline">View Treatments &rarr;</span>
           </Card>
           <Card title="Gym Majlis" image={gymImage} href="/services#gym" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">State-of-the-art equipment in a sophisticated environment for your fitness journey.</p>
-            <span class="text-vintage-gold font-bold text-sm uppercase tracking-wide group-hover:underline">View Facilities &rarr;</span>
           </Card>
           <Card title="Coffee Shop" image={coffeeImage} href="/services#coffee" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">Artisan coffee and healthy bites to fuel your day or relax after a workout.</p>
-            <span class="text-vintage-gold font-bold text-sm uppercase tracking-wide group-hover:underline">View Menu &rarr;</span>
           </Card>
         </div>
       </div>
@@ -139,15 +140,15 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
             </p>
             <div class="flex flex-wrap gap-4">
               <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-vintage-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
                 <span>24/7 Access</span>
               </div>
               <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-vintage-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
                 <span>Free Assessment</span>
               </div>
               <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-vintage-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
                 <span>Spa Credits</span>
               </div>
             </div>
@@ -189,12 +190,10 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b
       
       <div class="relative z-10 max-w-4xl mx-auto">
         <div class="mb-8">
-           <svg class="w-12 h-12 text-vintage-gold mx-auto opacity-80" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21L14.017 18C14.017 16.0547 15.372 15.5508 16.3076 15.5508C17.4331 15.5508 19 16.2949 19 18C19 18.2578 19 21 19 21H23V18C23 14.1621 19.5391 12 16.3076 12C14.7715 12 14.017 12 14.017 12V9C14.017 9 14.7246 9 16.1201 9C19.7246 9 22 6.64258 22 2H18C18 3.55469 16.9248 4 16.1201 4C14.8682 4 14.017 2.94922 14.017 2H10V12H6.98291C8.51855 12 9.27344 12 9.27344 12V15C9.27344 15 8.56641 15 7.1709 15C3.56641 15 1.29102 17.3574 1.29102 22H5.29102C5.29102 20.4453 6.36621 20 7.1709 20C8.42188 20 9.27344 21.0508 9.27344 21H14.017Z" />
-          </svg>
+           <ReactIcon name="FaQuoteLeft" className="text-vintage-gold mx-auto opacity-80" size={48} />
         </div>
         
-        <blockquote class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-10 text-white">
+        <blockquote class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-10 text-white text-balance">
           "A truly magical place. The spa treatments are world-class and the atmosphere is simply breathtaking."
         </blockquote>
         
