@@ -1,0 +1,244 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button.astro';
+import ReactIcon from '../../components/ReactIcon.jsx';
+import roomsData from '../../data/rooms.json';
+
+export function getStaticPaths() {
+  return roomsData.map((room) => ({
+    params: { id: room.id },
+    props: { room },
+  }));
+}
+
+const { room } = Astro.props;
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}?text=I'm interested in booking the ${room.name}`;
+
+// Get other rooms for recommendations
+const otherRooms = roomsData.filter(r => r.id !== room.id).slice(0, 3);
+---
+
+<Layout title={`${room.name} | Vintage Villa and Spa`}>
+  <Header />
+  
+  <main class="pt-20">
+    <!-- Hero Section with Image Gallery -->
+    <section class="relative h-[60vh] md:h-[70vh] bg-vintage-dark">
+      <div class="absolute inset-0">
+        <img 
+          src={room.images[0]} 
+          alt={room.name}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+      </div>
+      
+      <div class="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12">
+        <div class="max-w-3xl">
+          <span class="inline-block bg-vintage-gold text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+            {room.size} • {room.capacity}
+          </span>
+          <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-4">{room.name}</h1>
+          <p class="text-xl md:text-2xl text-vintage-gold italic mb-6">{room.tagline}</p>
+          <p class="text-lg text-gray-200 leading-relaxed mb-8">{room.description}</p>
+          
+          <div class="flex flex-wrap gap-4">
+            <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary" class="text-lg px-8 py-4">
+              Book Now - ₹{room.price.toLocaleString('en-IN')}/night
+            </Button>
+            <Button href="/contact" variant="outline" class="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-vintage-dark">
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="py-12 bg-stone-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {room.images.map((image, index) => (
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-lg group cursor-pointer">
+              <img 
+                src={image} 
+                alt={`${room.name} - View ${index + 1}`}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Room Details -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          <!-- Main Content -->
+          <div class="lg:col-span-2 space-y-12">
+            
+            <!-- Room Specifications -->
+            <div>
+              <h2 class="text-3xl font-serif font-bold text-vintage-dark mb-6">Room Specifications</h2>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-stone-50 rounded-lg">
+                  <ReactIcon name="RiRulerLine" size={32} className="text-vintage-gold mx-auto mb-3" />
+                  <p class="text-sm text-gray-600 mb-1">Size</p>
+                  <p class="font-bold text-vintage-dark">{room.size}</p>
+                </div>
+                <div class="text-center p-6 bg-stone-50 rounded-lg">
+                  <ReactIcon name="RiUserLine" size={32} className="text-vintage-gold mx-auto mb-3" />
+                  <p class="text-sm text-gray-600 mb-1">Capacity</p>
+                  <p class="font-bold text-vintage-dark">{room.capacity}</p>
+                </div>
+                <div class="text-center p-6 bg-stone-50 rounded-lg">
+                  <ReactIcon name="RiHotelBedLine" size={32} className="text-vintage-gold mx-auto mb-3" />
+                  <p class="text-sm text-gray-600 mb-1">Beds</p>
+                  <p class="font-bold text-vintage-dark">{room.beds}</p>
+                </div>
+                <div class="text-center p-6 bg-stone-50 rounded-lg">
+                  <ReactIcon name="RiMoneyRupeeCircleLine" size={32} className="text-vintage-gold mx-auto mb-3" />
+                  <p class="text-sm text-gray-600 mb-1">Price</p>
+                  <p class="font-bold text-vintage-dark">₹{room.price.toLocaleString('en-IN')}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Amenities -->
+            <div>
+              <h2 class="text-3xl font-serif font-bold text-vintage-dark mb-6">Amenities</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {room.amenities.map((amenity) => (
+                  <div class="flex items-center gap-3 p-4 bg-stone-50 rounded-lg">
+                    <ReactIcon name="HiCheckCircle" size={24} className="text-vintage-gold flex-shrink-0" />
+                    <span class="text-vintage-dark">{amenity}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div>
+              <h2 class="text-3xl font-serif font-bold text-vintage-dark mb-6">Features</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {room.features.map((feature) => (
+                  <div class="flex items-center gap-3 p-4 bg-stone-50 rounded-lg">
+                    <ReactIcon name="RiStarLine" size={24} className="text-vintage-gold flex-shrink-0" />
+                    <span class="text-vintage-dark">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-24 space-y-6">
+              
+              <!-- Booking Card -->
+              <div class="bg-vintage-cream p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-serif font-bold text-vintage-dark mb-4">Book This Room</h3>
+                <div class="mb-6">
+                  <p class="text-sm text-gray-600 mb-2">Price per night</p>
+                  <p class="text-4xl font-serif font-bold text-vintage-gold">₹{room.price.toLocaleString('en-IN')}</p>
+                  <p class="text-xs text-gray-500 mt-1">+ taxes & fees</p>
+                </div>
+                
+                <div class="space-y-4 mb-6">
+                  <div class="flex items-center gap-3 text-sm text-gray-700">
+                    <ReactIcon name="HiCheckCircle" size={20} className="text-vintage-gold" />
+                    <span>Free cancellation</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-gray-700">
+                    <ReactIcon name="HiCheckCircle" size={20} className="text-vintage-gold" />
+                    <span>Complimentary breakfast</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-sm text-gray-700">
+                    <ReactIcon name="HiCheckCircle" size={20} className="text-vintage-gold" />
+                    <span>24/7 room service</span>
+                  </div>
+                </div>
+
+                <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary" class="w-full text-center mb-3">
+                  Book via WhatsApp
+                </Button>
+                <Button href="/contact" variant="outline" class="w-full text-center">
+                  Contact for Details
+                </Button>
+              </div>
+
+              <!-- Need Help -->
+              <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+                <h4 class="font-bold text-vintage-dark mb-3">Need Help?</h4>
+                <p class="text-sm text-gray-600 mb-4">Our team is here to assist you with your booking.</p>
+                <div class="space-y-2 text-sm">
+                  <a href={`tel:${phoneNumber}`} class="flex items-center gap-2 text-vintage-gold hover:text-vintage-dark transition-colors">
+                    <ReactIcon name="HiPhone" size={16} />
+                    <span>+91 {phoneNumber}</span>
+                  </a>
+                  <a href="mailto:info@vintagevilla.com" class="flex items-center gap-2 text-vintage-gold hover:text-vintage-dark transition-colors">
+                    <ReactIcon name="HiEnvelope" size={16} />
+                    <span>info@vintagevilla.com</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Rooms -->
+    {otherRooms.length > 0 && (
+      <section class="py-20 bg-stone-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-serif font-bold text-vintage-dark mb-4">You May Also Like</h2>
+            <p class="text-gray-600">Explore our other luxury accommodations</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {otherRooms.map((otherRoom) => (
+              <a href={`/rooms/${otherRoom.id}`} class="group">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
+                  <div class="relative h-64 overflow-hidden">
+                    <img 
+                      src={otherRoom.images[0]} 
+                      alt={otherRoom.name}
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div class="absolute top-4 right-4 bg-vintage-dark/90 text-white px-4 py-2 rounded-full">
+                      <span class="text-lg font-serif font-bold">₹{otherRoom.price.toLocaleString('en-IN')}</span>
+                      <span class="text-xs opacity-80">/night</span>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-2xl font-serif font-bold text-vintage-dark mb-2">{otherRoom.name}</h3>
+                    <p class="text-vintage-gold italic mb-3">{otherRoom.tagline}</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">{otherRoom.description}</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                      <span>{otherRoom.size}</span>
+                      <span>•</span>
+                      <span>{otherRoom.capacity}</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+  </main>
+  
+  <Footer />
+</Layout>

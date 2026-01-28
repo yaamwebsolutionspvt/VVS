@@ -1,0 +1,218 @@
+---
+import ReactIcon from './ReactIcon.jsx';
+
+interface Testimonial {
+  id: number;
+  quote: string;
+  author: string;
+  role: string;
+  avatar: string;
+  rating: number;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+  autoRotate?: boolean;
+  interval?: number;
+}
+
+const { testimonials, autoRotate = true, interval = 6000 } = Astro.props;
+---
+
+<div class="testimonial-slider-container relative">
+  <!-- Testimonials -->
+  <div class="testimonial-slider relative overflow-hidden">
+    {testimonials.map((testimonial, index) => (
+      <div 
+        class={`testimonial-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100 relative' : 'opacity-0'}`}
+        data-index={index}
+      >
+        <div class="flex flex-col items-center text-center px-4 md:px-8">
+          <!-- Quote Icon -->
+          <div class="mb-6">
+            <ReactIcon name="FaQuoteLeft" className="text-vintage-gold opacity-80" size={48} />
+          </div>
+
+          <!-- Quote Text -->
+          <blockquote class="text-xl md:text-3xl font-serif italic leading-relaxed mb-8 text-white max-w-4xl text-balance">
+            "{testimonial.quote}"
+          </blockquote>
+
+          <!-- Rating Stars -->
+          <div class="flex gap-1 mb-6">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <ReactIcon name="RiStarFill" className="text-vintage-gold" size={20} />
+            ))}
+          </div>
+
+          <!-- Author Info -->
+          <div class="flex items-center justify-center gap-4">
+            <div class="w-14 h-14 rounded-full bg-gray-300 overflow-hidden ring-2 ring-vintage-gold/50">
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.author}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="text-left">
+              <cite class="text-vintage-gold font-sans font-bold uppercase tracking-widest not-italic block text-sm md:text-base">
+                {testimonial.author}
+              </cite>
+              <span class="text-xs text-white/70 uppercase tracking-wide">
+                {testimonial.role}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation Dots -->
+  <div class="flex justify-center gap-3 mt-10">
+    {testimonials.map((_, index) => (
+      <button
+        class={`testimonial-dot w-2.5 h-2.5 rounded-full border-2 border-vintage-gold/50 transition-all duration-300 hover:scale-125 ${index === 0 ? 'bg-vintage-gold scale-125' : 'bg-transparent'}`}
+        data-index={index}
+        aria-label={`Go to testimonial ${index + 1}`}
+      />
+    ))}
+  </div>
+
+  <!-- Navigation Arrows (Optional) -->
+  <button 
+    class="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:translate-x-0 w-12 h-12 rounded-full bg-vintage-gold/20 backdrop-blur-sm hover:bg-vintage-gold transition-all flex items-center justify-center text-white group"
+    aria-label="Previous testimonial"
+  >
+    <ReactIcon name="HiChevronLeft" size={24} className="group-hover:scale-110 transition-transform" />
+  </button>
+  <button 
+    class="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-0 w-12 h-12 rounded-full bg-vintage-gold/20 backdrop-blur-sm hover:bg-vintage-gold transition-all flex items-center justify-center text-white group"
+    aria-label="Next testimonial"
+  >
+    <ReactIcon name="HiChevronRight" size={24} className="group-hover:scale-110 transition-transform" />
+  </button>
+</div>
+
+<script define:vars={{ autoRotate, interval }}>
+  (function() {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    
+    let currentIndex = 0;
+    let autoRotateTimer = null;
+
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('opacity-100', 'relative');
+        slide.classList.add('opacity-0', 'absolute');
+      });
+
+      // Update dots
+      dots.forEach(dot => {
+        dot.classList.remove('bg-vintage-gold', 'scale-125');
+        dot.classList.add('bg-transparent');
+      });
+
+      // Show target slide
+      slides[index].classList.remove('opacity-0', 'absolute');
+      slides[index].classList.add('opacity-100', 'relative');
+
+      // Update dot
+      dots[index].classList.add('bg-vintage-gold', 'scale-125');
+      dots[index].classList.remove('bg-transparent');
+
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      const next = (currentIndex + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    function resetAutoRotate() {
+      if (autoRotateTimer) {
+        clearInterval(autoRotateTimer);
+      }
+      if (autoRotate && slides.length > 1) {
+        autoRotateTimer = setInterval(nextSlide, interval);
+      }
+    }
+
+    // Dot click handlers
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        resetAutoRotate();
+      });
+    });
+
+    // Arrow click handlers
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoRotate();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoRotate();
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        resetAutoRotate();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        resetAutoRotate();
+      }
+    });
+
+    // Start auto-rotation
+    resetAutoRotate();
+
+    // Pause on hover
+    const container = document.querySelector('.testimonial-slider-container');
+    if (container) {
+      container.addEventListener('mouseenter', () => {
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+        }
+      });
+
+      container.addEventListener('mouseleave', () => {
+        resetAutoRotate();
+      });
+    }
+  })();
+</script>
+
+<style>
+  .testimonial-slider {
+    min-height: 300px;
+    position: relative;
+  }
+
+  .testimonial-slide {
+    transition: opacity 1s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-slider {
+      min-height: 400px;
+    }
+  }
+</style>

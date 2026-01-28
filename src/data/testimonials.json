@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "quote": "The Moroccan Bath experience was absolutely transformative. My skin has never felt so soft and rejuvenated. The therapists are incredibly skilled and the ambiance is pure luxury.",
+        "author": "Sarah Mitchell",
+        "role": "Regular Guest",
+        "avatar": "https://i.pravatar.cc/150?img=32",
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "quote": "I've been a member of Gym Majlis for over a year now. The equipment is top-notch, the trainers are professional, and the spa discounts are an amazing perk. Best investment in my health!",
+        "author": "Michael Chen",
+        "role": "Premium Member",
+        "avatar": "https://i.pravatar.cc/150?img=12",
+        "rating": 5
+    },
+    {
+        "id": 3,
+        "quote": "Stayed in the Presidential Villa for our anniversary. The private pool, butler service, and spa treatments made it unforgettable. We'll definitely be back!",
+        "author": "Priya & Raj Sharma",
+        "role": "Villa Guests",
+        "avatar": "https://i.pravatar.cc/150?img=45",
+        "rating": 5
+    },
+    {
+        "id": 4,
+        "quote": "The Couples Retreat package was the perfect gift for my wife. The attention to detail, from the rose petals to the champagne, exceeded all expectations. Truly romantic!",
+        "author": "James Anderson",
+        "role": "Package Guest",
+        "avatar": "https://i.pravatar.cc/150?img=15",
+        "rating": 5
+    },
+    {
+        "id": 5,
+        "quote": "As a busy professional, the 7-Day Detox program was exactly what I needed. Lost weight, gained energy, and learned sustainable wellness habits. The nutritionist was fantastic!",
+        "author": "Dr. Aisha Khan",
+        "role": "Wellness Program Participant",
+        "avatar": "https://i.pravatar.cc/150?img=27",
+        "rating": 5
+    },
+    {
+        "id": 6,
+        "quote": "The coffee shop is my favorite spot to work remotely. Great WiFi, amazing coffee, and the healthy menu keeps me fueled. Plus, the vintage decor is Instagram-worthy!",
+        "author": "Emma Rodriguez",
+        "role": "Regular Patron",
+        "avatar": "https://i.pravatar.cc/150?img=38",
+        "rating": 5
+    }
+]

@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import RoomCard from '../components/RoomCard.astro';
+import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
+
+// Import room data
+import roomsData from '../data/rooms.json';
+
+const heroImage = "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80";
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+---
+
+<Layout title="Rooms & Suites | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Luxury Accommodations"
+    subtitle="Your Home Away From Home"
+    backgroundImage={heroImage}
+  />
+
+  <!-- Intro Section -->
+  <section class="py-16 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl text-center">
+      <span class="text-vintage-gold uppercase tracking-[0.2em] text-sm font-semibold mb-2 block">Refined Comfort</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mb-6">Experience Timeless Elegance</h2>
+      <div class="w-16 h-0.5 bg-vintage-gold mx-auto mb-6"></div>
+      <p class="text-lg text-vintage-text opacity-80 leading-relaxed">
+        Each of our meticulously designed rooms and suites offers a unique blend of vintage charm and modern luxury. 
+        From intimate retreats to expansive villas, discover your perfect sanctuary.
+      </p>
+    </div>
+  </section>
+
+  <!-- Rooms Grid -->
+  <section class="py-20 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        {roomsData.map((room, index) => (
+          <RoomCard room={room} featured={index === 1} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-20 px-4 bg-stone-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-4">Compare Our Rooms</h2>
+        <p class="text-gray-600">Find the perfect accommodation for your needs</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden lg:block overflow-x-auto">
+        <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
+          <thead class="bg-vintage-dark text-white">
+            <tr>
+              <th class="px-6 py-4 text-left font-serif">Feature</th>
+              {roomsData.map((room) => (
+                <th class="px-6 py-4 text-center font-serif">{room.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Price per Night</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center text-vintage-gold font-bold">₹{room.price.toLocaleString('en-IN')}</td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Size</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">{room.size}</td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Capacity</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">{room.capacity}</td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Spa Access</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">
+                  <ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" />
+                </td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Private Balcony</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">
+                  {room.amenities.some(a => a.includes('Balcony')) ? (
+                    <ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" />
+                  ) : (
+                    <ReactIcon name="HiXMark" size={24} className="text-gray-300 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Private Pool</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">
+                  {room.amenities.some(a => a.includes('Pool')) ? (
+                    <ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" />
+                  ) : (
+                    <ReactIcon name="HiXMark" size={24} className="text-gray-300 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold text-vintage-dark">Butler Service</td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">
+                  {room.amenities.some(a => a.includes('Butler')) ? (
+                    <ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" />
+                  ) : (
+                    <ReactIcon name="HiXMark" size={24} className="text-gray-300 mx-auto" />
+                  )}
+                </td>
+              ))}
+            </tr>
+            <tr class="bg-stone-100">
+              <td class="px-6 py-4"></td>
+              {roomsData.map((room) => (
+                <td class="px-6 py-4 text-center">
+                  <Button href={`/rooms/${room.id}`} variant="primary" class="text-sm">View Details</Button>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="lg:hidden space-y-6">
+        {roomsData.map((room) => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-serif font-bold text-vintage-dark mb-4">{room.name}</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Price:</span>
+                <span class="font-bold text-vintage-gold">₹{room.price.toLocaleString('en-IN')}/night</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Size:</span>
+                <span class="font-semibold">{room.size}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Capacity:</span>
+                <span class="font-semibold">{room.capacity}</span>
+              </div>
+            </div>
+            <Button href={`/rooms/${room.id}`} variant="outline" class="w-full mt-4 text-center">View Details</Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Highlight -->
+  <section class="py-20 px-4 bg-vintage-green text-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">All Rooms Include</h2>
+        <p class="text-white/80 max-w-2xl mx-auto">Standard amenities available in every accommodation</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
+          <ReactIcon name="RiWifiLine" size={40} className="mx-auto mb-3 text-vintage-gold" />
+          <h4 class="font-bold mb-1">High-Speed WiFi</h4>
+          <p class="text-sm text-white/70">Complimentary</p>
+        </div>
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
+          <ReactIcon name="RiServiceLine" size={40} className="mx-auto mb-3 text-vintage-gold" />
+          <h4 class="font-bold mb-1">Room Service</h4>
+          <p class="text-sm text-white/70">24/7 Available</p>
+        </div>
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
+          <ReactIcon name="RiTShirtAirLine" size={40} className="mx-auto mb-3 text-vintage-gold" />
+          <h4 class="font-bold mb-1">Luxury Robes</h4>
+          <p class="text-sm text-white/70">Premium Quality</p>
+        </div>
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
+          <ReactIcon name="RiLeafLine" size={40} className="mx-auto mb-3 text-vintage-gold" />
+          <h4 class="font-bold mb-1">Organic Toiletries</h4>
+          <p class="text-sm text-white/70">Eco-Friendly</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="py-20 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-6">Ready to Book Your Stay?</h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Contact us directly to check availability, discuss special requests, or book your perfect room.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary">
+          Book via WhatsApp
+        </Button>
+        <Button href="/contact" variant="outline">
+          Contact Us
+        </Button>
+      </div>
+      
+      <!-- Policies -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h4 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiClock" size={20} className="text-vintage-gold" />
+            Check-in/Check-out
+          </h4>
+          <p class="text-sm text-gray-600">Check-in: 3:00 PM<br/>Check-out: 11:00 AM</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h4 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiXCircle" size={20} className="text-vintage-gold" />
+            Cancellation
+          </h4>
+          <p class="text-sm text-gray-600">Free cancellation up to 48 hours before check-in</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h4 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiCreditCard" size={20} className="text-vintage-gold" />
+            Payment
+          </h4>
+          <p class="text-sm text-gray-600">All major credit cards accepted. Deposit required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

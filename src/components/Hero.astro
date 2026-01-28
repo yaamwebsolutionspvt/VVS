@@ -4,37 +4,48 @@ import ReactIcon from "./ReactIcon.jsx";
 interface Props {
   title: string;
   subtitle?: string;
-  backgroundImage: string;
+  backgroundImage?: string;
+  backgroundImages?: string[]; // Optional array for carousel
   ctaText?: string;
   ctaLink?: string;
-  size?: 'full' | 'short'; // New prop to control height
+  size?: 'full' | 'short';
 }
 
 const { 
   title, 
   subtitle, 
-  backgroundImage, 
+  backgroundImage,
+  backgroundImages,
   ctaText, 
   ctaLink,
   size = 'full' 
 } = Astro.props;
 
+const images = backgroundImages || (backgroundImage ? [backgroundImage] : []);
+const isCarousel = images.length > 1;
+
 // Determine height class based on size prop
 const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
 ---
 
-<section class={`relative flex items-center justify-center overflow-hidden group ${heightClass}`}>
+<section class={`relative flex items-center justify-center overflow-hidden group ${heightClass}`} id="hero-section">
   
-  <!-- Background Image with "Ken Burns" Slow Zoom Effect -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10s] ease-out scale-100 animate-slow-zoom"
-      style={`background-image: url(${backgroundImage});`}
-    ></div>
+  <!-- Background Images Container -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    {images.map((img, index) => (
+      <div
+        class={`hero-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+        style={`background-image: url(${img});`}
+        data-index={index}
+      >
+        <!-- Individual image zoom effect -->
+        <div class="absolute inset-0 bg-inherit scale-100 animate-slow-zoom"></div>
+      </div>
+    ))}
   </div>
 
-  <!-- Gradient Overlay (Better readability than flat color) -->
-  <div class="absolute inset-0 bg-gradient-to-b from-vintage-dark/30 via-vintage-dark/40 to-vintage-dark/80"></div>
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-vintage-dark/30 via-vintage-dark/40 to-vintage-dark/80"></div>
 
   <!-- Content Container -->
   <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto flex flex-col items-center">
@@ -43,13 +54,13 @@ const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
       <div class="opacity-0 animate-fade-in-down mb-6 flex flex-col items-center">
         <!-- Decorative vertical line for luxury feel -->
         <div class="h-12 w-px bg-vintage-gold/70 mb-4"></div>
-        <span class="block text-vintage-gold text-sm md:text-base font-sans font-bold tracking-[0.25em] uppercase shadow-sm">
+        <span class="block text-vintage-gold text-sm md:text-base font-sans font-bold tracking-[0.25em] uppercase px-6 py-2 bg-vintage-dark/60 backdrop-blur-sm rounded-sm" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">
           {subtitle}
         </span>
       </div>
     )}
 
-    <h1 class="opacity-0 animate-fade-in-up text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 text-white leading-[1.1] text-shadow-sm drop-shadow-lg text-balance">
+    <h1 class="opacity-0 animate-fade-in-up text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 text-white leading-[1.1] drop-shadow-2xl text-balance" style="text-shadow: 3px 3px 12px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.5);">
       {title}
     </h1>
 
@@ -67,27 +78,75 @@ const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
     )}
   </div>
 
-  <!-- Scroll Indicator (Only show on full screen) -->
+  <!-- Scroll Indicator -->
   {size === 'full' && (
-    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce opacity-80 hidden md:block">
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce opacity-80 z-10 hidden md:block">
       <div class="text-white flex flex-col items-center gap-2">
         <span class="text-[10px] uppercase tracking-[0.4em] font-bold opacity-50">Discover</span>
         <ReactIcon name="HiChevronDown" size={24} />
       </div>
     </div>
   )}
+
+  <!-- Carousel Navigation (Optional) -->
+  {isCarousel && (
+    <div class="absolute bottom-6 right-8 z-20 flex gap-2">
+      {images.map((_, index) => (
+        <div 
+          class={`carousel-dot w-2 h-2 rounded-full border border-vintage-gold/50 transition-all duration-300 ${index === 0 ? 'bg-vintage-gold scale-125' : 'bg-transparent'}`}
+          data-index={index}
+        ></div>
+      ))}
+    </div>
+  )}
 </section>
 
+{isCarousel && (
+  <script is:inline>
+    (function() {
+      const bgs = document.querySelectorAll('.hero-bg');
+      const dots = document.querySelectorAll('.carousel-dot');
+      let currentIndex = 0;
+      const interval = 6000; // 6 seconds per slide
+
+      function nextSlide() {
+        // Fade out current
+        bgs[currentIndex].classList.remove('opacity-100');
+        bgs[currentIndex].classList.add('opacity-0');
+        if (dots[currentIndex]) {
+          dots[currentIndex].classList.remove('bg-vintage-gold', 'scale-125');
+          dots[currentIndex].classList.add('bg-transparent');
+        }
+
+        // Increment index
+        currentIndex = (currentIndex + 1) % bgs.length;
+
+        // Fade in next
+        bgs[currentIndex].classList.remove('opacity-0');
+        bgs[currentIndex].classList.add('opacity-100');
+        if (dots[currentIndex]) {
+          dots[currentIndex].classList.add('bg-vintage-gold', 'scale-125');
+          dots[currentIndex].classList.remove('bg-transparent');
+        }
+      }
+
+      if (bgs.length > 1) {
+        setInterval(nextSlide, interval);
+      }
+    })();
+  </script>
+)}
+
 <style>
-  /* Custom Animations not usually in default Tailwind */
+  /* Custom Animations */
   
   @keyframes slow-zoom {
     0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+    100% { transform: scale(1.15); } /* Slightly stronger zoom for carousel feel */
   }
 
   .animate-slow-zoom {
-    animation: slow-zoom 20s ease-out forwards;
+    animation: slow-zoom 10s ease-out forwards;
   }
 
   @keyframes fade-in-up {
@@ -112,12 +171,7 @@ const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
     animation: fade-in-down 1s ease-out forwards;
   }
 
-  @keyframes scroll-down {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(15px); opacity: 0; }
-  }
-
-  .animate-scroll-down {
-    animation: scroll-down 2s infinite;
+  .hero-bg {
+    will-change: opacity;
   }
 </style>

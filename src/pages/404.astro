@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
+
+const heroImage = "https://storage.eduyaam.com/uploads/20260127053532_Gemini_Generated_Image_lm28ylm28ylm28yl.png";
+---
+
+<Layout title="404 - Page Not Found | Vintage Villa and Spa">
+  <Header />
+
+  <main>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-vintage-dark text-white pt-20">
+      <!-- Background Image Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src={heroImage} 
+          alt="Vintage Background" 
+          class="w-full h-full object-cover opacity-30 grayscale"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-vintage-dark/80 via-vintage-dark/90 to-vintage-dark"></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10 text-center">
+        <span class="text-vintage-gold font-bold tracking-widest uppercase text-lg mb-4 block animate-fade-in">Error 404</span>
+        <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 animate-fade-in-up">Lost in Serenity</h1>
+        <div class="w-24 h-1 bg-vintage-gold mx-auto mb-10"></div>
+        <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+          It seems the path you are looking for has been tucked away. Let us guide you back to our sanctuary of relaxation.
+        </p>
+        <div class="flex justify-center">
+          <Button href="/" variant="primary" class="px-12 py-4 text-lg">
+            Return to Home
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1.5s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+</style>

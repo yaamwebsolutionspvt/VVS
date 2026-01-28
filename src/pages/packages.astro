@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import PackageCard from '../components/PackageCard.astro';
+import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
+
+// Import packages data
+import packagesData from '../data/packages.json';
+
+const heroImage = "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80";
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+
+// Group packages by category
+const spaPackages = packagesData.filter(p => p.category === 'spa');
+const wellnessPackages = packagesData.filter(p => p.category === 'wellness');
+const fitnessPackages = packagesData.filter(p => p.category === 'fitness');
+const specialPackages = packagesData.filter(p => ['seasonal', 'special', 'corporate'].includes(p.category));
+---
+
+<Layout title="Packages & Offers | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Special Packages"
+    subtitle="Curated Experiences & Exclusive Offers"
+    backgroundImage={heroImage}
+  />
+
+  <!-- Intro Section -->
+  <section class="py-16 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl text-center">
+      <span class="text-vintage-gold uppercase tracking-[0.2em] text-sm font-semibold mb-2 block">Save More, Experience More</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mb-6">Exclusive Package Deals</h2>
+      <div class="w-16 h-0.5 bg-vintage-gold mx-auto mb-6"></div>
+      <p class="text-lg text-vintage-text opacity-80 leading-relaxed">
+        Discover our thoughtfully curated packages that combine the best of our services at exceptional value. 
+        From romantic getaways to transformative wellness retreats, find your perfect experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter/Navigation -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm py-4">
+    <div class="container mx-auto flex justify-center gap-4 md:gap-8 flex-wrap px-4">
+      <a href="#spa" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Spa</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#wellness" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Wellness</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#fitness" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Fitness</a>
+      <span class="text-vintage-gold/30">•</span>
+      <a href="#special" class="text-vintage-dark hover:text-vintage-gold font-serif font-bold uppercase tracking-widest text-sm transition-colors">Special Offers</a>
+    </div>
+  </nav>
+
+  <!-- Spa Packages -->
+  <section id="spa" class="py-20 px-4 bg-white scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-vintage-gold uppercase tracking-widest text-xs font-bold">Relaxation & Pampering</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mt-2 mb-4">Spa Packages</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Indulge in our signature spa experiences designed to rejuvenate your body and soul</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {spaPackages.map((pkg) => (
+          <PackageCard package={pkg} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wellness Packages -->
+  <section id="wellness" class="py-20 px-4 bg-stone-50 scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-vintage-gold uppercase tracking-widest text-xs font-bold">Holistic Health</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mt-2 mb-4">Wellness Retreats</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive programs for complete mind-body transformation</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {wellnessPackages.map((pkg) => (
+          <PackageCard package={pkg} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitness Packages -->
+  <section id="fitness" class="py-20 px-4 bg-white scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-vintage-gold uppercase tracking-widest text-xs font-bold">Strength & Performance</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mt-2 mb-4">Fitness Programs</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Achieve your fitness goals with expert guidance and comprehensive training</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {fitnessPackages.map((pkg) => (
+          <PackageCard package={pkg} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offers -->
+  <section id="special" class="py-20 px-4 bg-vintage-dark text-white scroll-mt-20">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-vintage-gold uppercase tracking-widest text-xs font-bold">Limited Time</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mt-2 mb-4">Special Offers</h2>
+        <p class="text-white/80 max-w-2xl mx-auto">Seasonal packages and exclusive deals you won't want to miss</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {specialPackages.map((pkg) => (
+          <PackageCard package={pkg} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our Packages -->
+  <section class="py-20 px-4 bg-vintage-cream">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-4">Why Book a Package?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Maximize your experience and savings with our bundled offerings</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 bg-vintage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ReactIcon name="RiPriceTag3Line" size={32} className="text-vintage-gold" />
+          </div>
+          <h3 class="font-serif font-bold text-vintage-dark mb-2">Better Value</h3>
+          <p class="text-sm text-gray-600">Save up to 30% compared to booking services individually</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 bg-vintage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ReactIcon name="RiCalendarCheckLine" size={32} className="text-vintage-gold" />
+          </div>
+          <h3 class="font-serif font-bold text-vintage-dark mb-2">Convenience</h3>
+          <p class="text-sm text-gray-600">Everything planned and scheduled for you in advance</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 bg-vintage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ReactIcon name="RiStarLine" size={32} className="text-vintage-gold" />
+          </div>
+          <h3 class="font-serif font-bold text-vintage-dark mb-2">Curated Experience</h3>
+          <p class="text-sm text-gray-600">Expertly designed combinations for optimal results</p>
+        </div>
+
+        <div class="text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-16 h-16 bg-vintage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ReactIcon name="RiGiftLine" size={32} className="text-vintage-gold" />
+          </div>
+          <h3 class="font-serif font-bold text-vintage-dark mb-2">Bonus Perks</h3>
+          <p class="text-sm text-gray-600">Exclusive add-ons and complimentary services included</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Package CTA -->
+  <section class="py-20 px-4 bg-vintage-green text-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Need a Custom Package?</h2>
+      <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+        Don't see exactly what you're looking for? We can create a personalized package tailored to your specific needs and preferences.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary" class="bg-white text-vintage-green hover:bg-vintage-gold hover:text-white">
+          Request Custom Package
+        </Button>
+        <Button href="/contact" variant="outline" class="border-white text-white hover:bg-white hover:text-vintage-green">
+          Contact Us
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl font-serif font-bold text-center text-vintage-dark mb-12">Package FAQs</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiQuestionMarkCircle" size={20} className="text-vintage-gold" />
+            Can I gift a package to someone?
+          </h3>
+          <p class="text-gray-600 text-sm">Absolutely! All our packages make perfect gifts. Contact us to purchase a gift certificate.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiQuestionMarkCircle" size={20} className="text-vintage-gold" />
+            What's your cancellation policy for packages?
+          </h3>
+          <p class="text-gray-600 text-sm">Packages can be cancelled up to 48 hours before the start date for a full refund. Within 48 hours, a 50% cancellation fee applies.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiQuestionMarkCircle" size={20} className="text-vintage-gold" />
+            Can I modify a package after booking?
+          </h3>
+          <p class="text-gray-600 text-sm">Yes, we can adjust your package based on availability. Contact us at least 24 hours before your appointment.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2 flex items-center gap-2">
+            <ReactIcon name="HiQuestionMarkCircle" size={20} className="text-vintage-gold" />
+            Do packages expire?
+          </h3>
+          <p class="text-gray-600 text-sm">Most packages are valid for 6 months from purchase date. Multi-day packages must be used within 12 months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

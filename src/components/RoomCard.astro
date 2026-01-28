@@ -1,0 +1,115 @@
+---
+import Button from './Button.astro';
+import ReactIcon from './ReactIcon.jsx';
+
+interface Props {
+  room: {
+    id: string;
+    name: string;
+    tagline: string;
+    description: string;
+    images: string[];
+    price: number;
+    size: string;
+    capacity: string;
+    beds: string;
+    amenities: string[];
+    features: string[];
+  };
+  featured?: boolean;
+}
+
+const { room, featured = false } = Astro.props;
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}?text=I'm interested in booking the ${room.name}`;
+---
+
+<div class={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 ${featured ? 'ring-2 ring-vintage-gold' : ''}`}>
+  {featured && (
+    <div class="bg-vintage-gold text-white text-center py-2 px-4 text-sm font-bold uppercase tracking-widest">
+      Most Popular
+    </div>
+  )}
+  
+  <!-- Image Carousel -->
+  <div class="relative h-64 md:h-80 overflow-hidden group">
+    <img 
+      src={room.images[0]} 
+      alt={room.name}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+    
+    <!-- Price Badge -->
+    <div class="absolute top-4 right-4 bg-vintage-dark/90 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+      <span class="text-2xl font-serif font-bold">₹{room.price.toLocaleString('en-IN')}</span>
+      <span class="text-sm opacity-80">/night</span>
+    </div>
+    
+    <!-- Room Info Overlay -->
+    <div class="absolute bottom-4 left-4 text-white">
+      <h3 class="text-2xl md:text-3xl font-serif font-bold mb-1 text-vintage-gold">{room.name}</h3>
+      <p class="text-sm md:text-base opacity-90 italic">{room.tagline}</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 md:p-8">
+    <!-- Description -->
+    <p class="text-gray-600 mb-6 leading-relaxed">{room.description}</p>
+
+    <!-- Quick Info -->
+    <div class="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-200">
+      <div class="text-center">
+        <div class="text-vintage-gold mb-2">
+          <ReactIcon name="RiRulerLine" size={24} className="mx-auto" />
+        </div>
+        <p class="text-xs text-gray-500 uppercase tracking-wide">Size</p>
+        <p class="font-bold text-vintage-dark">{room.size}</p>
+      </div>
+      <div class="text-center">
+        <div class="text-vintage-gold mb-2">
+          <ReactIcon name="RiGroupLine" size={24} className="mx-auto" />
+        </div>
+        <p class="text-xs text-gray-500 uppercase tracking-wide">Capacity</p>
+        <p class="font-bold text-vintage-dark">{room.capacity}</p>
+      </div>
+      <div class="text-center">
+        <div class="text-vintage-gold mb-2">
+          <ReactIcon name="RiHotelBedLine" size={24} className="mx-auto" />
+        </div>
+        <p class="text-xs text-gray-500 uppercase tracking-wide">Bed</p>
+        <p class="font-bold text-vintage-dark text-sm">{room.beds}</p>
+      </div>
+    </div>
+
+    <!-- Key Amenities (First 6) -->
+    <div class="mb-6">
+      <h4 class="font-serif font-bold text-vintage-dark mb-3 flex items-center gap-2">
+        <ReactIcon name="HiSparkles" size={20} className="text-vintage-gold" />
+        Key Amenities
+      </h4>
+      <ul class="grid grid-cols-2 gap-2">
+        {room.amenities.slice(0, 6).map((amenity) => (
+          <li class="flex items-start gap-2 text-sm text-gray-600">
+            <ReactIcon name="HiCheckCircle" size={16} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+            <span>{amenity}</span>
+          </li>
+        ))}
+      </ul>
+      {room.amenities.length > 6 && (
+        <p class="text-xs text-vintage-gold mt-2 italic">+ {room.amenities.length - 6} more amenities</p>
+      )}
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <Button href={`/rooms/${room.id}`} variant="outline" class="flex-1 text-center">
+        View Details
+      </Button>
+      <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary" class="flex-1 text-center">
+        Book Now
+      </Button>
+    </div>
+  </div>
+</div>

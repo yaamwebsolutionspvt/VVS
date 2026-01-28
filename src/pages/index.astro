@@ -6,14 +6,29 @@ import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
 import Button from '../components/Button.astro';
 import ReactIcon from '../components/ReactIcon.jsx';
+import RoomCard from '../components/RoomCard.astro';
+import PackageCard from '../components/PackageCard.astro';
+import TestimonialSlider from '../components/TestimonialSlider.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+
+// Import data
+import roomsData from '../data/rooms.json';
+import packagesData from '../data/packages.json';
+import testimonialsData from '../data/testimonials.json';
+import statsData from '../data/stats.json';
 
 const phoneNumber = "8492984991";
 const waLink = `https://wa.me/91${phoneNumber}`;
 
-const heroImage = "https://res.cloudinary.com/dw1sh368y/image/upload/v1769162798/Gemini_Generated_Image_nzfjtenzfjtenzfj_tpkz79.png";
+const heroImage = "https://storage.eduyaam.com/uploads/20260127053532_Gemini_Generated_Image_lm28ylm28ylm28yl.png";
+const snowCoverHeroImage = "https://storage.eduyaam.com/uploads/20260127062604_Gemini_Generated_Image_fnma27fnma27fnma.png";
 const spaImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
 const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg?v=1";
-const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png";
+const coffeeImage = "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
+
+// Select featured items
+const featuredRooms = roomsData.slice(0, 3); // Top 3 rooms
+const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa' || p.category === 'wellness').slice(0, 4); // Featured packages
 ---
 
 <Layout title="Vintage Villa and Spa | Luxury Wellness Center">
@@ -23,13 +38,24 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
     <!-- Hero Section -->
     <Hero 
       title="Sanctuary of Serenity"
-      subtitle="Welcome to Vintage Villa"
-      backgroundImage={heroImage}
+      subtitle="Welcome to Vintage Villa & Spa"
+      backgroundImages={[
+        heroImage,
+        snowCoverHeroImage,
+        spaImage,
+      ]}
       ctaText="Explore Services"
       ctaLink="/services"
     />
 
-    <!-- Intro Section with subtle pattern -->
+    <!-- Trust Bar / Quick Stats -->
+    <section class="py-8 px-4 bg-vintage-dark border-b border-vintage-gold/20">
+      <div class="container mx-auto">
+        <StatsCounter stats={statsData} darkMode={true} />
+      </div>
+    </section>
+
+    <!-- Intro Section -->
     <section class="py-24 px-4 bg-vintage-cream text-center relative">
       <div class="max-w-3xl mx-auto relative z-10">
         <span class="text-vintage-gold uppercase tracking-[0.2em] text-sm font-semibold mb-2 block">Redefining Wellness</span>
@@ -47,11 +73,10 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
       </div>
     </section>
 
-    <!-- Features / Amenities (Icons) -->
+    <!-- Features / Amenities -->
     <section class="py-16 bg-white border-b border-vintage-cream/50">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-          <!-- Feature 1 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
               <ReactIcon name="RiMedalLine" size={32} />
@@ -59,15 +84,13 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
             <h3 class="font-serif text-xl font-bold mb-2">Expert Therapists</h3>
             <p class="text-sm text-gray-600">Certified professionals dedicated to your wellbeing.</p>
           </div>
-          <!-- Feature 2 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
               <ReactIcon name="RiHotelBedLine" size={32} />
             </div>
-            <h3 class="font-serif text-xl font-bold mb-2">Private Suites</h3>
-            <p class="text-sm text-gray-600">Exclusive rooms for complete privacy and calm.</p>
+            <h3 class="font-serif text-xl font-bold mb-2">Luxury Suites</h3>
+            <p class="text-sm text-gray-600">Exclusive rooms for complete privacy and comfort.</p>
           </div>
-          <!-- Feature 3 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
               <ReactIcon name="RiLeafLine" size={32} />
@@ -75,7 +98,6 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
             <h3 class="font-serif text-xl font-bold mb-2">Organic Products</h3>
             <p class="text-sm text-gray-600">Sustainable, cruelty-free premium oils and lotions.</p>
           </div>
-          <!-- Feature 4 -->
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
               <ReactIcon name="FaVenus" size={32} />
@@ -91,7 +113,7 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
     <section class="py-24 px-4 bg-stone-50">
       <div class="container mx-auto">
         <div class="text-center mb-16">
-          <span class="text-vintage-gold font-bold tracking-widest uppercase">Discover</span>
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Discover</span>
           <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">Our Experiences</h2>
           <p class="max-w-2xl mx-auto text-gray-600">From high-intensity workouts to the deepest state of relaxation, our curated spaces are designed for your lifestyle.</p>
         </div>
@@ -110,22 +132,79 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
       </div>
     </section>
 
-    <!-- Split Section: Highlight -->
+    <!-- Featured Rooms Section -->
+    <section class="py-24 px-4 bg-white">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Accommodations</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">Luxury Rooms & Suites</h2>
+          <p class="max-w-2xl mx-auto text-gray-600">Experience unparalleled comfort in our elegantly designed rooms, each offering a unique blend of vintage charm and modern amenities.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+          {featuredRooms.map((room) => (
+            <RoomCard room={room} />
+          ))}
+        </div>
+
+        <div class="text-center">
+          <Button href="/rooms" variant="primary">View All Rooms</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Packages Section -->
+    <section class="py-24 px-4 bg-vintage-cream">
+      <div class="container mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Special Offers</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">Exclusive Packages</h2>
+          <p class="max-w-2xl mx-auto text-gray-600">Discover our curated wellness packages designed to provide maximum value and transformative experiences.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {featuredPackages.map((pkg) => (
+            <PackageCard package={pkg} />
+          ))}
+        </div>
+
+        <div class="text-center">
+          <Button href="/packages" variant="outline">View All Packages</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split Section: Signature Treatment -->
     <section class="grid grid-cols-1 md:grid-cols-2">
       <div class="relative h-96 md:h-auto overflow-hidden group">
         <img 
-          src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-          alt="Massage Therapy" 
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+          alt="Moroccan Bath Treatment" 
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
       </div>
       <div class="bg-vintage-dark text-vintage-cream p-12 md:p-24 flex flex-col justify-center items-start">
-        <span class="text-vintage-gold uppercase tracking-widest mb-4">Signature Treatment</span>
-        <h2 class="text-3xl md:text-4xl font-serif mb-6">The Royal Moroccan Bath</h2>
+        <span class="text-vintage-gold uppercase tracking-widest mb-4 text-sm font-bold">Signature Treatment</span>
+        <h2 class="text-3xl md:text-4xl font-serif mb-6 font-bold">The Royal Moroccan Bath</h2>
         <p class="text-gray-300 leading-relaxed mb-8">
           Experience the purifying ritual of the traditional Hammam. Using black soap, eucalyptus, and full-body exfoliation, this treatment leaves your skin glowing and your spirit renewed.
         </p>
         <Button href="/services/moroccan-bath" variant="primary">Learn More</Button>
+      </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="py-24 px-4 bg-vintage-green text-vintage-cream relative overflow-hidden">
+      <!-- Background Texture -->
+      <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+      
+      <div class="relative z-10 container mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Testimonials</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mt-2 mb-6">What Our Guests Say</h2>
+        </div>
+
+        <TestimonialSlider testimonials={testimonialsData} autoRotate={true} interval={6000} />
       </div>
     </section>
 
@@ -138,10 +217,10 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
             <p class="text-gray-600 mb-6 text-lg">
               Unlock exclusive access to our premium fitness facilities, personal training sessions, and member-only spa discounts.
             </p>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 mb-6">
               <div class="flex items-center gap-2">
                 <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
-                <span>24/7 Access</span>
+                <span>Unlimited Access</span>
               </div>
               <div class="flex items-center gap-2">
                 <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
@@ -151,60 +230,84 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
                 <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
                 <span>Spa Credits</span>
               </div>
+              <div class="flex items-center gap-2">
+                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
+                <span>Personal Training</span>
+              </div>
             </div>
+            <Button href="/membership" variant="primary">View Membership Plans</Button>
           </div>
           <div class="md:w-1/3 bg-vintage-gold p-10 text-center text-white h-full w-full flex flex-col justify-center">
             <span class="text-sm uppercase opacity-90 mb-2">Starting from</span>
-            <span class="text-4xl font-serif font-bold mb-6">$99<span class="text-lg font-sans font-normal">/mo</span></span>
-            <Button href="/membership" variant="outline" class="border-white text-white hover:bg-white hover:text-vintage-gold">View Plans</Button>
+            <span class="text-5xl font-serif font-bold mb-6">₹8,299<span class="text-lg font-sans font-normal">/mo</span></span>
+            <p class="text-sm opacity-90">4 membership tiers available</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Visual Gallery Grid -->
-    <section class="py-12 px-4 bg-white">
+    <section class="py-20 px-4 bg-white">
       <div class="container mx-auto">
-        <h2 class="text-center text-3xl font-serif mb-10">A Glimpse Inside</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-96">
-           <div class="col-span-2 row-span-2 relative overflow-hidden rounded-lg group">
-             <img src={spaImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Main Spa" />
+        <div class="text-center mb-12">
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Gallery</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">A Glimpse Inside</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+           <div class="col-span-2 row-span-2 relative overflow-hidden rounded-lg group h-96">
+             <img src={spaImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Spa Interior" />
            </div>
-           <div class="relative overflow-hidden rounded-lg group">
-             <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Detail 1" />
+           <div class="relative overflow-hidden rounded-lg group h-48">
+             <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Treatment Room" />
            </div>
-           <div class="relative overflow-hidden rounded-lg group">
-             <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Detail 2" />
+           <div class="relative overflow-hidden rounded-lg group h-48">
+             <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Relaxation Area" />
            </div>
-           <div class="col-span-2 relative overflow-hidden rounded-lg group">
-             <img src={coffeeImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Coffee" />
+           <div class="col-span-2 relative overflow-hidden rounded-lg group h-48">
+             <img src={gymImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Gym Facilities" />
            </div>
+        </div>
+
+        <div class="text-center">
+          <Button href="/gallery" variant="outline">View Full Gallery</Button>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials / Quote -->
-    <section class="py-24 px-4 bg-vintage-green text-vintage-cream text-center relative overflow-hidden">
-      <!-- Background Texture Overlay -->
-      <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-      
-      <div class="relative z-10 max-w-4xl mx-auto">
-        <div class="mb-8">
-           <ReactIcon name="FaQuoteLeft" className="text-vintage-gold mx-auto opacity-80" size={48} />
+    <!-- Final CTA Section -->
+    <section class="py-20 px-4 bg-vintage-dark text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <img src={spaImage} class="w-full h-full object-cover" alt="Background" />
+      </div>
+
+      <div class="relative z-10 container mx-auto text-center max-w-4xl">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Ready to Begin Your Wellness Journey?</h2>
+        <p class="text-xl text-white/90 mb-10 leading-relaxed">
+          Book your appointment today and discover why thousands of guests choose Vintage Villa for their wellness needs.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary" class="text-lg px-8 py-4">
+            Book via WhatsApp
+          </Button>
+          <Button href="/contact" variant="outline" class="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-vintage-dark">
+            Contact Us
+          </Button>
         </div>
-        
-        <blockquote class="text-2xl md:text-4xl font-serif italic leading-relaxed mb-10 text-white text-balance">
-          "A truly magical place. The spa treatments are world-class and the atmosphere is simply breathtaking."
-        </blockquote>
-        
-        <div class="flex items-center justify-center gap-4">
-          <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
-             <!-- Placeholder Avatar -->
-             <img src="https://i.pravatar.cc/150?img=32" alt="User Avatar" class="w-full h-full object-cover">
+
+        <div class="flex flex-wrap justify-center gap-6 text-sm text-white/70">
+          <div class="flex items-center gap-2">
+            <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={16} />
+            <span>Same-day appointments available</span>
           </div>
-          <div class="text-left">
-            <cite class="text-vintage-gold font-sans font-bold uppercase tracking-widest not-italic block">Sarah Mitchell</cite>
-            <span class="text-xs text-white/60 uppercase tracking-wide">Regular Guest</span>
+          <div class="flex items-center gap-2">
+            <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={16} />
+            <span>Free consultation</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={16} />
+            <span>Flexible cancellation</span>
           </div>
         </div>
       </div>
@@ -213,12 +316,23 @@ const coffeeImage = "https://storage.eduyaam.com/uploads/20260124040936_unnamed-
     <!-- Newsletter -->
     <section class="py-16 px-4 bg-vintage-cream border-t border-stone-200">
       <div class="max-w-xl mx-auto text-center">
-        <h3 class="text-2xl font-serif text-vintage-dark mb-2">Join Our Mailing List</h3>
+        <h3 class="text-2xl md:text-3xl font-serif text-vintage-dark mb-2 font-bold">Join Our Mailing List</h3>
         <p class="text-gray-600 mb-6">Receive exclusive offers, wellness tips, and event invitations.</p>
-        <form class="flex gap-2">
-          <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-vintage-gold" />
-          <button class="bg-vintage-dark text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-vintage-gold transition-colors">Subscribe</button>
+        <form class="flex flex-col sm:flex-row gap-2">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            required
+            class="flex-1 px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-vintage-gold focus:ring-1 focus:ring-vintage-gold" 
+          />
+          <button 
+            type="submit"
+            class="bg-vintage-dark text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-vintage-gold transition-colors rounded-sm"
+          >
+            Subscribe
+          </button>
         </form>
+        <p class="text-xs text-gray-500 mt-3">We respect your privacy. Unsubscribe anytime.</p>
       </div>
     </section>
   </main>

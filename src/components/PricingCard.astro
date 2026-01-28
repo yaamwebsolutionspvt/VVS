@@ -1,0 +1,74 @@
+---
+import Button from './Button.astro';
+import ReactIcon from './ReactIcon.jsx';
+
+interface Props {
+  tier: string;
+  price: number | string;
+  priceUnit?: string;
+  description: string;
+  features: string[];
+  recommended?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { 
+  tier, 
+  price, 
+  priceUnit = '/month',
+  description, 
+  features, 
+  recommended = false,
+  ctaText = 'Get Started',
+  ctaLink = '#'
+} = Astro.props;
+---
+
+<div class={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 ${recommended ? 'ring-4 ring-vintage-gold scale-105 relative z-10' : ''}`}>
+  {recommended && (
+    <div class="bg-vintage-gold text-white text-center py-3 px-4 font-bold uppercase tracking-widest text-sm">
+      <ReactIcon name="HiStar" size={16} className="inline mr-2" />
+      Most Popular
+    </div>
+  )}
+  
+  <div class="p-8 md:p-10">
+    <!-- Tier Name -->
+    <h3 class="text-2xl md:text-3xl font-serif font-bold text-vintage-dark mb-2">{tier}</h3>
+    <p class="text-gray-600 mb-6">{description}</p>
+
+    <!-- Price -->
+    <div class="mb-8">
+      <div class="flex items-baseline gap-1">
+        {typeof price === 'number' ? (
+          <>
+            <span class="text-5xl md:text-6xl font-serif font-bold text-vintage-gold">₹{price}</span>
+            <span class="text-gray-500 text-lg">{priceUnit}</span>
+          </>
+        ) : (
+          <span class="text-3xl md:text-4xl font-serif font-bold text-vintage-gold">{price}</span>
+        )}
+      </div>
+    </div>
+
+    <!-- Features List -->
+    <ul class="space-y-4 mb-8">
+      {features.map((feature) => (
+        <li class="flex items-start gap-3">
+          <ReactIcon name="HiCheckCircle" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+          <span class="text-gray-700">{feature}</span>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA Button -->
+    <Button 
+      href={ctaLink} 
+      variant={recommended ? 'primary' : 'outline'} 
+      class="w-full text-center"
+    >
+      {ctaText}
+    </Button>
+  </div>
+</div>

@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import PricingCard from '../components/PricingCard.astro';
+import Button from '../components/Button.astro';
+import ReactIcon from '../components/ReactIcon.jsx';
+
+const heroImage = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80";
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+
+// Membership tiers data
+const memberships = [
+  {
+    tier: 'Basic',
+    price: 99,
+    description: 'Perfect for fitness enthusiasts',
+    features: [
+      'Unlimited Gym Access',
+      'Access to Cardio & Weight Equipment',
+      'Locker & Shower Facilities',
+      'Free Fitness Assessment',
+      '10% Discount on Spa Services',
+      'Access to Group Classes (Limited)',
+      'Mobile App Access'
+    ],
+    ctaLink: waLink
+  },
+  {
+    tier: 'Premium',
+    price: 149,
+    description: 'Complete wellness experience',
+    features: [
+      'Everything in Basic',
+      'Unlimited Group Classes (Yoga, Pilates, Spin)',
+      '2 Spa Treatments per Month',
+      '20% Discount on All Spa Services',
+      'Complimentary Towel Service',
+      'Priority Class Booking',
+      'Nutrition Consultation (Quarterly)',
+      'Guest Passes (2 per month)',
+      'Access to Steam Room & Sauna'
+    ],
+    recommended: true,
+    ctaLink: waLink
+  },
+  {
+    tier: 'Elite',
+    price: 249,
+    description: 'Ultimate luxury & personalization',
+    features: [
+      'Everything in Premium',
+      '4 Personal Training Sessions per Month',
+      '4 Spa Treatments per Month',
+      '30% Discount on All Services',
+      'Dedicated Locker',
+      'Complimentary Laundry Service',
+      'Monthly Wellness Consultation',
+      'Priority Spa Booking',
+      'Guest Passes (5 per month)',
+      'Complimentary Healthy Breakfast',
+      'Access to VIP Lounge',
+      'Free Parking'
+    ],
+    ctaLink: waLink
+  },
+  {
+    tier: 'Corporate',
+    price: 'Custom',
+    description: 'Tailored for teams & businesses',
+    features: [
+      'Customized Team Packages',
+      'Flexible Member Count',
+      'Dedicated Account Manager',
+      'Team Wellness Programs',
+      'Monthly Progress Reports',
+      'Corporate Wellness Events',
+      'Flexible Billing Options',
+      'On-site Services Available',
+      'Priority Support'
+    ],
+    ctaText: 'Contact Sales',
+    ctaLink: '/contact'
+  }
+];
+---
+
+<Layout title="Membership Plans | Vintage Villa and Spa">
+  <Header />
+
+  <Hero 
+    title="Membership Plans"
+    subtitle="Invest in Your Wellness Journey"
+    backgroundImage={heroImage}
+  />
+
+  <!-- Intro Section -->
+  <section class="py-16 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl text-center">
+      <span class="text-vintage-gold uppercase tracking-[0.2em] text-sm font-semibold mb-2 block">Join the Gym Majlis</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mb-6">Choose Your Perfect Plan</h2>
+      <div class="w-16 h-0.5 bg-vintage-gold mx-auto mb-6"></div>
+      <p class="text-lg text-vintage-text opacity-80 leading-relaxed">
+        Whether you're focused on fitness, seeking complete wellness, or looking for corporate solutions, 
+        we have a membership tier designed for your lifestyle and goals.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="py-20 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {memberships.map((membership) => (
+          <PricingCard {...membership} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-20 px-4 bg-stone-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-4">Compare Memberships</h2>
+        <p class="text-gray-600">See what's included in each tier at a glance</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden lg:block overflow-x-auto">
+        <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
+          <thead class="bg-vintage-dark text-white">
+            <tr>
+              <th class="px-6 py-4 text-left font-serif">Feature</th>
+              <th class="px-6 py-4 text-center font-serif">Basic</th>
+              <th class="px-6 py-4 text-center font-serif bg-vintage-gold text-white">Premium</th>
+              <th class="px-6 py-4 text-center font-serif">Elite</th>
+              <th class="px-6 py-4 text-center font-serif">Corporate</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Monthly Price</td>
+              <td class="px-6 py-4 text-center">₹8,299</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">₹12,499</td>
+              <td class="px-6 py-4 text-center">₹20,999</td>
+              <td class="px-6 py-4 text-center">Custom</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Gym Access</td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Group Classes</td>
+              <td class="px-6 py-4 text-center text-sm text-gray-600">Limited</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Spa Treatments/Month</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">2</td>
+              <td class="px-6 py-4 text-center">4</td>
+              <td class="px-6 py-4 text-center">Custom</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Personal Training/Month</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">—</td>
+              <td class="px-6 py-4 text-center">4 Sessions</td>
+              <td class="px-6 py-4 text-center">Custom</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Spa Discount</td>
+              <td class="px-6 py-4 text-center">10%</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">20%</td>
+              <td class="px-6 py-4 text-center">30%</td>
+              <td class="px-6 py-4 text-center">Custom</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">Guest Passes/Month</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">2</td>
+              <td class="px-6 py-4 text-center">5</td>
+              <td class="px-6 py-4 text-center">Unlimited</td>
+            </tr>
+            <tr class="hover:bg-stone-50">
+              <td class="px-6 py-4 font-semibold">VIP Lounge Access</td>
+              <td class="px-6 py-4 text-center">—</td>
+              <td class="px-6 py-4 text-center bg-vintage-gold/5">—</td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+              <td class="px-6 py-4 text-center"><ReactIcon name="HiCheckCircle" size={24} className="text-green-600 mx-auto" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile View -->
+      <div class="lg:hidden space-y-4">
+        <p class="text-center text-gray-600 text-sm">Scroll horizontally to compare features →</p>
+        <div class="overflow-x-auto">
+          <div class="min-w-[600px]">
+            <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden text-sm">
+              <thead class="bg-vintage-dark text-white">
+                <tr>
+                  <th class="px-4 py-3 text-left">Feature</th>
+                  <th class="px-4 py-3 text-center">Basic</th>
+                  <th class="px-4 py-3 text-center bg-vintage-gold">Premium</th>
+                  <th class="px-4 py-3 text-center">Elite</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 font-semibold">Price</td>
+                  <td class="px-4 py-3 text-center">₹8,299</td>
+                  <td class="px-4 py-3 text-center bg-vintage-gold/5">₹12,499</td>
+                  <td class="px-4 py-3 text-center">₹20,999</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-semibold">Spa/Month</td>
+                  <td class="px-4 py-3 text-center">—</td>
+                  <td class="px-4 py-3 text-center bg-vintage-gold/5">2</td>
+                  <td class="px-4 py-3 text-center">4</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-semibold">PT/Month</td>
+                  <td class="px-4 py-3 text-center">—</td>
+                  <td class="px-4 py-3 text-center bg-vintage-gold/5">—</td>
+                  <td class="px-4 py-3 text-center">4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Member Benefits -->
+  <section class="py-20 px-4 bg-vintage-green text-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">All Members Enjoy</h2>
+        <p class="text-white/80 max-w-2xl mx-auto">Exclusive perks available to every membership tier</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+          <ReactIcon name="RiCalendarCheckLine" size={48} className="mx-auto mb-4 text-vintage-gold" />
+          <h3 class="font-serif font-bold text-xl mb-2">No Commitment</h3>
+          <p class="text-white/80 text-sm">Cancel anytime with 30-day notice. No long-term contracts.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+          <ReactIcon name="RiSmartphoneLine" size={48} className="mx-auto mb-4 text-vintage-gold" />
+          <h3 class="font-serif font-bold text-xl mb-2">Mobile App</h3>
+          <p class="text-white/80 text-sm">Book classes, track progress, and manage your membership on-the-go.</p>
+        </div>
+
+        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
+          <ReactIcon name="RiCommunityLine" size={48} className="mx-auto mb-4 text-vintage-gold" />
+          <h3 class="font-serif font-bold text-xl mb-2">Community Events</h3>
+          <p class="text-white/80 text-sm">Exclusive member-only workshops, challenges, and social events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl font-serif font-bold text-center text-vintage-dark mb-12">Membership FAQs</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2">How do I sign up?</h3>
+          <p class="text-gray-600 text-sm">Contact us via WhatsApp or visit our facility. We'll give you a tour and help you choose the right plan.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2">Can I freeze my membership?</h3>
+          <p class="text-gray-600 text-sm">Yes, you can freeze your membership for up to 2 months per year for medical or travel reasons.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2">Can I upgrade or downgrade my plan?</h3>
+          <p class="text-gray-600 text-sm">Absolutely! You can change your membership tier at any time. Upgrades are effective immediately, downgrades at next billing cycle.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2">Do unused spa treatments roll over?</h3>
+          <p class="text-gray-600 text-sm">Spa treatments do not roll over month-to-month, but you can book multiple sessions in advance.</p>
+        </div>
+
+        <div class="bg-stone-50 p-6 rounded-lg">
+          <h3 class="font-bold text-vintage-dark mb-2">Is there a joining fee?</h3>
+          <p class="text-gray-600 text-sm">We occasionally waive joining fees during promotions. Contact us for current offers!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-vintage-cream">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-vintage-dark mb-6">Ready to Join?</h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Start your wellness journey today. Contact us for a complimentary facility tour and membership consultation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={waLink} target="_blank" rel="noopener noreferrer" variant="primary">
+          Join via WhatsApp
+        </Button>
+        <Button href="/contact" variant="outline">
+          Schedule a Tour
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

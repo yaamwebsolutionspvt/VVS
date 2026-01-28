@@ -3,67 +3,237 @@ import ReactIcon from "./ReactIcon.jsx";
 
 const phoneNumber = "8492984991";
 const waLink = `https://wa.me/91${phoneNumber}`;
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-vintage-sand text-vintage-dark py-20 mt-auto">
-  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
-    <!-- Brand -->
-    <div class="space-y-6">
-      <a href="/" class="block inline-block group">
-        <img 
-          src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
-          alt="Vintage Villa & Spa" 
-          class="h-28 md:h-36 w-auto object-contain rounded-sm mb-4"
-        />
-        <span class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white drop-shadow-lg group-hover:text-vintage-gold transition-colors tracking-tight block">Vintage Villa & Spa</span>
-      </a>
-      <p class="font-sans text-lg opacity-90 leading-relaxed max-w-sm">
-        Experience the perfect blend of luxury, wellness, and tradition. 
-        Your sanctuary for relaxation and fitness.
-      </p>
-    </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h4 class="text-xl font-serif font-bold mb-8 text-vintage-dark uppercase tracking-[0.2em]">Quick Links</h4>
-      <ul class="space-y-4 font-sans text-lg">
-        <li><a href="/services#spa" class="text-vintage-text hover:text-white transition-colors">Vintage Spa</a></li>
-        <li><a href="/services#gym" class="text-vintage-text hover:text-white transition-colors">Gym Majlis</a></li>
-        <li><a href="/services#coffee" class="text-vintage-text hover:text-white transition-colors">Coffee Shop</a></li>
-        <li><a href={waLink} target="_blank" rel="noopener noreferrer" class="text-vintage-text hover:text-white transition-colors font-bold">Book Appointment</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div>
-      <h4 class="text-xl font-serif font-bold mb-8 text-vintage-dark uppercase tracking-[0.2em]">Contact Us</h4>
-      <div class="space-y-4 font-sans text-lg text-vintage-text">
-        <p>123 Luxury Lane, Wellness City</p>
-        <p>Phone: <a href={`tel:${phoneNumber}`} class="hover:text-white">+91 {phoneNumber}</a></p>
-        <p>Email: <a href="mailto:info@vintagevilla.com" class="hover:text-white">info@vintagevilla.com</a></p>
-        <div class="flex space-x-4 mt-8 flex-wrap">
-          <!-- Social Icons -->
-          <a href="#" aria-label="Facebook" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
-            <ReactIcon name="FaFacebookF" size={22} />
+<footer class="bg-vintage-dark text-white">
+  <!-- Main Footer Content -->
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      
+      <!-- Brand & About -->
+      <div class="space-y-6">
+        <a href="/" class="block group">
+          <img 
+            src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
+            alt="Vintage Villa & Spa" 
+            class="h-20 w-auto object-contain mb-4 group-hover:scale-105 transition-transform"
+          />
+          <span class="text-2xl md:text-3xl font-serif font-bold text-white group-hover:text-vintage-gold transition-colors block">
+            Vintage Villa & Spa
+          </span>
+        </a>
+        <p class="text-gray-300 leading-relaxed text-sm">
+          Experience the perfect blend of luxury, wellness, and tradition in the heart of Pahalgam. Your sanctuary for relaxation, fitness, and rejuvenation.
+        </p>
+        
+        <!-- Social Media -->
+        <div class="flex gap-3 pt-2">
+          <a 
+            href="#" 
+            aria-label="Facebook" 
+            class="w-10 h-10 flex items-center justify-center bg-vintage-gold/10 hover:bg-vintage-gold text-vintage-gold hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <ReactIcon name="FaFacebookF" size={18} />
           </a>
-          <a href="#" aria-label="Instagram" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
-            <ReactIcon name="FaInstagram" size={22} />
+          <a 
+            href="#" 
+            aria-label="Instagram" 
+            class="w-10 h-10 flex items-center justify-center bg-vintage-gold/10 hover:bg-vintage-gold text-vintage-gold hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <ReactIcon name="FaInstagram" size={18} />
           </a>
-          <a href={waLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
-            <ReactIcon name="FaWhatsapp" size={22} />
+          <a 
+            href={waLink} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="WhatsApp" 
+            class="w-10 h-10 flex items-center justify-center bg-vintage-gold/10 hover:bg-vintage-gold text-vintage-gold hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <ReactIcon name="FaWhatsapp" size={18} />
           </a>
-          <a href="#" aria-label="Twitter" class="text-vintage-dark hover:text-white transition-colors p-2 bg-vintage-gold/10 rounded-full hover:bg-vintage-gold">
-            <ReactIcon name="FaXTwitter" size={22} />
+          <a 
+            href="#" 
+            aria-label="Twitter" 
+            class="w-10 h-10 flex items-center justify-center bg-vintage-gold/10 hover:bg-vintage-gold text-vintage-gold hover:text-white rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <ReactIcon name="FaXTwitter" size={18} />
           </a>
         </div>
       </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-serif font-bold mb-6 text-vintage-gold uppercase tracking-wider">Quick Links</h4>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="/" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/about" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="/services" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="/rooms" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Rooms & Suites
+            </a>
+          </li>
+          <li>
+            <a href="/packages" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Packages
+            </a>
+          </li>
+          <li>
+            <a href="/membership" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Membership
+            </a>
+          </li>
+          <li>
+            <a href="/gallery" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Gallery
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="HiChevronRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Our Services -->
+      <div>
+        <h4 class="text-lg font-serif font-bold mb-6 text-vintage-gold uppercase tracking-wider">Our Services</h4>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="/services#spa" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiSpaLine" size={16} className="text-vintage-gold/70" />
+              Vintage Spa
+            </a>
+          </li>
+          <li>
+            <a href="/services#gym" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiRunLine" size={16} className="text-vintage-gold/70" />
+              Gym Majlis
+            </a>
+          </li>
+          <li>
+            <a href="/services#coffee" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiCupLine" size={16} className="text-vintage-gold/70" />
+              Coffee Shop
+            </a>
+          </li>
+          <li>
+            <a href="/rooms" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiHotelBedLine" size={16} className="text-vintage-gold/70" />
+              Luxury Rooms
+            </a>
+          </li>
+          <li>
+            <a href="/packages" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiGiftLine" size={16} className="text-vintage-gold/70" />
+              Wellness Packages
+            </a>
+          </li>
+          <li>
+            <a href="/services/moroccan-bath" class="text-gray-300 hover:text-vintage-gold transition-colors flex items-center gap-2 group">
+              <ReactIcon name="RiDropLine" size={16} className="text-vintage-gold/70" />
+              Moroccan Bath
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-serif font-bold mb-6 text-vintage-gold uppercase tracking-wider">Contact Us</h4>
+        <ul class="space-y-4 text-sm">
+          <li class="flex items-start gap-3">
+            <ReactIcon name="HiMapPin" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+            <div class="text-gray-300">
+              <p class="font-semibold text-white mb-1">Location</p>
+              <p class="leading-relaxed">Rafting Point, Charigam<br/>Pahalgam, Jammu & Kashmir<br/>192126, India</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <ReactIcon name="HiPhone" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+            <div class="text-gray-300">
+              <p class="font-semibold text-white mb-1">Phone</p>
+              <a href={`tel:${phoneNumber}`} class="hover:text-vintage-gold transition-colors">
+                +91 {phoneNumber}
+              </a>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <ReactIcon name="HiEnvelope" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+            <div class="text-gray-300">
+              <p class="font-semibold text-white mb-1">Email</p>
+              <a href="mailto:info@vintagevilla.com" class="hover:text-vintage-gold transition-colors">
+                info@vintagevilla.com
+              </a>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <ReactIcon name="HiClock" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+            <div class="text-gray-300">
+              <p class="font-semibold text-white mb-1">Hours</p>
+              <p>Open Daily<br/>9:00 AM - 10:00 PM</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
-  <div class="border-t border-vintage-dark/10 mt-16 pt-8 text-center text-sm font-sans opacity-60">
-    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
-      <p>Crafted with ❤️ by <a href="https://yaamwebsolutions.com" rel="noopener noreferrer" target="_blank" class="text-vintage-dark font-bold hover:text-white transition-colors">Yaam Web Solutions</a></p>
-      <span class="hidden md:inline text-vintage-dark/30">|</span>
-      <span>&copy; {new Date().getFullYear()} Vintage Villa and Spa. All rights reserved.</span>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-white/10">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        
+        <!-- Copyright -->
+        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+          <p>&copy; {currentYear} Vintage Villa and Spa. All rights reserved.</p>
+          <span class="hidden md:inline text-white/20">|</span>
+          <div class="flex gap-4">
+            <a href="/privacy" class="hover:text-vintage-gold transition-colors">Privacy Policy</a>
+            <span class="text-white/20">•</span>
+            <a href="/terms" class="hover:text-vintage-gold transition-colors">Terms of Service</a>
+          </div>
+        </div>
+
+        <!-- Developer Credit -->
+        <div class="flex items-center gap-2">
+          <span>Crafted with</span>
+          <ReactIcon name="FaHeart" size={14} className="text-red-500 animate-pulse" />
+          <span>by</span>
+          <a 
+            href="https://yaamwebsolutions.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="font-bold text-vintage-gold hover:text-white transition-colors"
+          >
+            Yaam Web Solutions
+          </a>
+        </div>
+
+      </div>
     </div>
   </div>
 </footer>

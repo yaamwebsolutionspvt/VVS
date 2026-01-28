@@ -1,15 +1,17 @@
 ---
 import ReactIcon from "./ReactIcon.jsx";
+import { Menu, X } from "lucide-react";
+
 ---
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 text-vintage-dark">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center transition-all duration-500" id="header-container">
+  <div class="container mx-auto px-4 py-2 flex justify-between items-center transition-all duration-500" id="header-container">
     <!-- Logo -->
     <a href="/" class="block hover:opacity-90 transition-opacity">
       <img 
         src="https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png" 
         alt="Vintage Villa & Spa" 
-        class="h-24 md:h-32 w-auto object-contain rounded-sm transition-all duration-500"
+        class="h-16 md:h-20 w-auto object-contain rounded-sm transition-all duration-500"
         id="header-logo"
       />
     </a>
@@ -17,31 +19,43 @@ import ReactIcon from "./ReactIcon.jsx";
     <!-- Desktop Nav -->
     <nav class="hidden md:flex space-x-8 font-sans font-bold text-lg" id="desktop-nav">
       <a href="/" class="nav-link transition-all duration-500">Home</a>
-      <a href="/about" class="nav-link transition-all duration-500">About</a>
+      <a href="/rooms" class="nav-link transition-all duration-500">Rooms</a>
       <a href="/services" class="nav-link transition-all duration-500">Services</a>
+      <a href="/packages" class="nav-link transition-all duration-500">Packages</a>
+      <a href="/membership" class="nav-link transition-all duration-500">Membership</a>
       <a href="/gallery" class="nav-link transition-all duration-500">Gallery</a>
+      <a href="/about" class="nav-link transition-all duration-500">About</a>
       <a href="/contact" class="nav-link transition-all duration-500">Contact</a>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden z-[100] text-vintage-gold focus:outline-none p-4" aria-label="Toggle Menu">
-      <div id="hamburger-icon" class="block">
-        <ReactIcon name="HiMenuAlt3" size={32} />
-      </div>
-      <div id="close-icon" class="hidden">
-        <ReactIcon name="HiXMark" size={32} />
-      </div>
-    </button>
+   <button
+  id="mobile-menu-btn"
+  class="md:hidden z-[100] p-4 text-vintage-gold"
+  aria-label="Toggle Menu"
+>
+  <div id="hamburger-icon" class="block">
+    <Menu size={32} strokeWidth={2} />
+  </div>
+
+  <div id="close-icon" class="hidden">
+    <X size={32} strokeWidth={2} />
+  </div>
+</button>
+
   </div>
 
   <!-- Mobile Drawer Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-vintage-dark/98 z-[90] translate-x-full transition-transform duration-500 flex items-center justify-center pointer-events-none md:hidden">
-    <nav class="flex flex-col space-y-4 w-full px-8 text-center">
-      <a href="/" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Home</a>
-      <a href="/about" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">About</a>
-      <a href="/services" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Services</a>
-      <a href="/gallery" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Gallery</a>
-      <a href="/contact" class="mobile-link py-4 text-3xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Contact</a>
+  <div id="mobile-menu" class="fixed inset-0 bg-vintage-dark/98 z-[90] translate-x-full transition-transform duration-500 pointer-events-none md:hidden overflow-y-auto">
+    <nav class="flex flex-col space-y-2 w-full px-8 py-24 text-center min-h-full">
+      <a href="/" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Home</a>
+      <a href="/rooms" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Rooms</a>
+      <a href="/services" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Services</a>
+      <a href="/packages" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Packages</a>
+      <a href="/membership" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Membership</a>
+      <a href="/gallery" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Gallery</a>
+      <a href="/about" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">About</a>
+      <a href="/contact" class="mobile-link py-3 text-2xl font-serif font-bold text-vintage-gold hover:text-white transition-colors border-b border-vintage-gold/10">Contact</a>
     </nav>
   </div>
 </header>
@@ -62,10 +76,10 @@ import ReactIcon from "./ReactIcon.jsx";
     
     if (isScrolled) {
       header.classList.add('bg-vintage-sand', 'shadow-md');
-      headerContainer.classList.remove('py-4');
-      headerContainer.classList.add('py-2');
-      headerLogo.classList.remove('h-24', 'md:h-32');
-      headerLogo.classList.add('h-16', 'md:h-20');
+      headerContainer.classList.remove('py-2');
+      headerContainer.classList.add('py-1');
+      headerLogo.classList.remove('h-16', 'md:h-20');
+      headerLogo.classList.add('h-12', 'md:h-14');
       
       // Update nav link colors for contrast on sand
       desktopNavLinks.forEach(link => {
@@ -77,10 +91,10 @@ import ReactIcon from "./ReactIcon.jsx";
       btn.classList.add('text-vintage-dark');
     } else {
       header.classList.remove('bg-vintage-sand', 'shadow-md');
-      headerContainer.classList.remove('py-2');
-      headerContainer.classList.add('py-4');
-      headerLogo.classList.remove('h-16', 'md:h-20');
-      headerLogo.classList.add('h-24', 'md:h-32');
+      headerContainer.classList.remove('py-1');
+      headerContainer.classList.add('py-2');
+      headerLogo.classList.remove('h-12', 'md:h-14');
+      headerLogo.classList.add('h-16', 'md:h-20');
 
       // Revert to gold for transparent state (visible on dark heroes)
       desktopNavLinks.forEach(link => {
