@@ -1,26 +1,26 @@
 [
     {
-        "number": 15,
+        "number": 2,
         "suffix": "+",
         "label": "Years of Excellence",
         "icon": "RiTimeLine"
     },
     {
-        "number": 5000,
+        "number": 500,
         "suffix": "+",
-        "label": "Happy Clients",
+        "label": "Happy Guests",
         "icon": "RiUserSmileLine"
     },
     {
-        "number": 50,
+        "number": 25,
         "suffix": "+",
         "label": "Spa Treatments",
         "icon": "RiSpaLine"
     },
     {
-        "number": 4.9,
+        "number": 4.8,
         "suffix": "★",
-        "label": "Average Rating",
+        "label": "Guest Rating",
         "icon": "RiStarLine"
     }
 ]

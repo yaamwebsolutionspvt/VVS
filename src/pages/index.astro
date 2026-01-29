@@ -197,7 +197,34 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
         <Button href="/services/moroccan-bath" variant="primary">Learn More</Button>
       </div>
     </section>
+<!-- Visual Gallery Grid -->
+    <section class="py-20 px-4 bg-white">
+      <div class="container mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Gallery</span>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">A Glimpse Inside</h2>
+        </div>
 
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+           <div class="col-span-2 row-span-2 relative overflow-hidden rounded-lg group h-96">
+             <img src={spaImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Spa Interior" />
+           </div>
+           <div class="relative overflow-hidden rounded-lg group h-48">
+             <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Treatment Room" />
+           </div>
+           <div class="relative overflow-hidden rounded-lg group h-48">
+             <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Relaxation Area" />
+           </div>
+           <div class="col-span-2 relative overflow-hidden rounded-lg group h-48">
+             <img src={gymImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Gym Facilities" />
+           </div>
+        </div>
+
+        <div class="text-center">
+          <Button href="/gallery" variant="outline">View Full Gallery</Button>
+        </div>
+      </div>
+    </section>
     <!-- Testimonials Slider -->
     <section class="py-24 px-4 bg-vintage-green text-vintage-cream relative overflow-hidden">
       <!-- Background Texture -->
@@ -251,34 +278,7 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
       </div>
     </section>
 
-    <!-- Visual Gallery Grid -->
-    <section class="py-20 px-4 bg-white">
-      <div class="container mx-auto">
-        <div class="text-center mb-12">
-          <span class="text-vintage-gold font-bold tracking-widest uppercase text-sm">Gallery</span>
-          <h2 class="text-4xl md:text-5xl font-serif font-bold text-vintage-dark mt-2 mb-6">A Glimpse Inside</h2>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-           <div class="col-span-2 row-span-2 relative overflow-hidden rounded-lg group h-96">
-             <img src={spaImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Spa Interior" />
-           </div>
-           <div class="relative overflow-hidden rounded-lg group h-48">
-             <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Treatment Room" />
-           </div>
-           <div class="relative overflow-hidden rounded-lg group h-48">
-             <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Relaxation Area" />
-           </div>
-           <div class="col-span-2 relative overflow-hidden rounded-lg group h-48">
-             <img src={gymImage} class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" alt="Gym Facilities" />
-           </div>
-        </div>
-
-        <div class="text-center">
-          <Button href="/gallery" variant="outline">View Full Gallery</Button>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- Final CTA Section -->
     <section class="py-20 px-4 bg-vintage-dark text-white relative overflow-hidden">
