@@ -4,26 +4,78 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonicalURL?: string;
 }
 
-const { title, description = "Vintage Villa and Spa - Luxury Spa, Gym, and Coffee Shop" } = Astro.props;
+const {
+  title,
+  description = "Luxury spa resort in Pahalgam, Kashmir offering premium spa treatments, modern gym facilities, fine dining & elegant rooms. Experience holistic wellness at Vintage Villa & Spa.",
+  keywords = "luxury spa pahalgam, resort in pahalgam, wellness center kashmir, moroccan bath pahalgam, gym in pahalgam, luxury accommodation pahalgam, spa resort kashmir, vintage villa pahalgam",
+  ogImage = "https://storage.eduyaam.com/uploads/20260129060131_VintageVillaAndSpaLogo.png",
+  ogType = "website",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+
+const siteName = "Vintage Villa and Spa";
+const siteURL = "https://vintagevilla.com"; // Update with actual domain
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Vintage Villa and Spa" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_IN" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#8B7355" />
+    <meta name="msapplication-TileColor" content="#8B7355" />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    
+    <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
-    <title>{title}</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" />
   </head>
   <body class="bg-vintage-cream text-vintage-text antialiased">
     <slot />

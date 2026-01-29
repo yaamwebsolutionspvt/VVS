@@ -1,0 +1,78 @@
+---
+// Structured Data Component for SEO
+interface Props {
+  type: 'hotel' | 'product' | 'offer' | 'breadcrumb';
+  data?: any;
+}
+
+const { type, data } = Astro.props;
+
+let schemaData = {};
+
+if (type === 'hotel') {
+  schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Vintage Villa and Spa",
+    "description": "Luxury spa resort in Pahalgam, Kashmir offering premium spa treatments, modern gym facilities, fine dining & elegant rooms",
+    "image": "https://storage.eduyaam.com/uploads/20260124040936_unnamed-removebg-preview.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rafting Point, Charigam",
+      "addressLocality": "Pahalgam",
+      "addressRegion": "Jammu and Kashmir",
+      "postalCode": "192126",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "34.0161",
+      "longitude": "75.3150"
+    },
+    "telephone": "+918492984991",
+    "email": "info@vintagevilla.com",
+    "url": "https://vintagevilla.com",
+    "priceRange": "₹₹₹",
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Spa", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Gym", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true }
+    ],
+    "starRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "22:00"
+    }
+  };
+} else if (type === 'product' && data) {
+  schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": data.name,
+    "description": data.description,
+    "image": data.image,
+    "offers": {
+      "@type": "Offer",
+      "price": data.price,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+} else if (type === 'offer' && data) {
+  schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    "name": data.name,
+    "description": data.description,
+    "price": data.price,
+    "priceCurrency": "INR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": new Date().toISOString()
+  };
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
