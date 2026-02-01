@@ -75,7 +75,19 @@ const waLink = `https://wa.me/91${phoneNumber}`;
             <tr class="hover:bg-stone-50">
               <td class="px-6 py-4 font-semibold text-vintage-dark">Price per Night</td>
               {roomsData.map((room) => (
-                <td class="px-6 py-4 text-center text-vintage-gold font-bold">₹{room.price.toLocaleString('en-IN')}</td>
+                <td class="px-6 py-4 text-center">
+                  <div class="space-y-1">
+                    <div class="text-vintage-gold font-bold">
+                      <span class="text-xs opacity-70">MAP:</span> ₹{room.price.toLocaleString('en-IN')}
+                    </div>
+                    <div class="text-sm text-gray-700">
+                      <span class="text-xs opacity-70">CP:</span> ₹{room.priceCP.toLocaleString('en-IN')}
+                    </div>
+                    <div class="text-sm text-gray-700">
+                      <span class="text-xs opacity-70">EP:</span> ₹{room.priceEP.toLocaleString('en-IN')}
+                    </div>
+                  </div>
+                </td>
               ))}
             </tr>
             <tr class="hover:bg-stone-50">
@@ -152,9 +164,19 @@ const waLink = `https://wa.me/91${phoneNumber}`;
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-serif font-bold text-vintage-dark mb-4">{room.name}</h3>
             <div class="space-y-2 text-sm">
-              <div class="flex justify-between">
-                <span class="text-gray-600">Price:</span>
-                <span class="font-bold text-vintage-gold">₹{room.price.toLocaleString('en-IN')}/night</span>
+              <div class="border-b pb-2 mb-2">
+                <span class="text-gray-600 block mb-1">Price per Night:</span>
+                <div class="space-y-1 text-right">
+                  <div class="font-bold text-vintage-gold">
+                    <span class="text-xs opacity-70">MAP:</span> ₹{room.price.toLocaleString('en-IN')}
+                  </div>
+                  <div class="text-sm text-gray-700">
+                    <span class="text-xs opacity-70">CP:</span> ₹{room.priceCP.toLocaleString('en-IN')}
+                  </div>
+                  <div class="text-sm text-gray-700">
+                    <span class="text-xs opacity-70">EP:</span> ₹{room.priceEP.toLocaleString('en-IN')}
+                  </div>
+                </div>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-600">Size:</span>

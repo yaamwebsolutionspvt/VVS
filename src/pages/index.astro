@@ -20,11 +20,11 @@ import statsData from '../data/stats.json';
 const phoneNumber = "8492984991";
 const waLink = `https://wa.me/91${phoneNumber}`;
 
-const heroImage = "https://storage.eduyaam.com/uploads/20260127053532_Gemini_Generated_Image_lm28ylm28ylm28yl.png";
-const snowCoverHeroImage = "https://storage.eduyaam.com/uploads/20260127062604_Gemini_Generated_Image_fnma27fnma27fnma.png";
+const heroImage = "https://storage.eduyaam.com/uploads/20260201160152_vvsbuilding.png";
 const spaImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
-const gymImage = "https://storage.eduyaam.com/uploads/20260123052409_5b56515d-b8d5-4db7-965d-fcdb52ac3d5d.jpg?v=1";
-const coffeeImage = "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
+const gymImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
+const coffeeImage = "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
+
 
 // Select featured items
 const featuredRooms = roomsData.slice(0, 3); // Top 3 rooms
@@ -46,7 +46,6 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
       subtitle="Welcome to Vintage Villa & Spa"
       backgroundImages={[
         heroImage,
-        snowCoverHeroImage,
         spaImage,
       ]}
       ctaText="Explore Services"
@@ -81,7 +80,7 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
     <!-- Features / Amenities -->
     <section class="py-16 bg-white border-b border-vintage-cream/50">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
             <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
               <ReactIcon name="RiMedalLine" size={32} />
@@ -103,13 +102,8 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
             <h3 class="font-serif text-xl font-bold mb-2">Organic Products</h3>
             <p class="text-sm text-gray-600">Sustainable, cruelty-free premium oils and lotions.</p>
           </div>
-          <div class="p-6 group hover:-translate-y-2 transition-transform duration-300">
-            <div class="w-16 h-16 mx-auto bg-vintage-cream rounded-full flex items-center justify-center mb-4 text-vintage-gold group-hover:bg-vintage-gold group-hover:text-white transition-colors">
-              <ReactIcon name="FaVenus" size={32} />
-            </div>
-            <h3 class="font-serif text-xl font-bold mb-2">Ladies Only Hours</h3>
-            <p class="text-sm text-gray-600">Dedicated times for comfort and privacy.</p>
-          </div>
+     
+         
         </div>
       </div>
     </section>
@@ -240,43 +234,7 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
       </div>
     </section>
 
-    <!-- Membership Banner -->
-    <section class="py-20 px-4 bg-vintage-gold/10 relative">
-      <div class="container mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="p-10 md:w-2/3">
-            <h3 class="text-3xl font-serif font-bold text-vintage-dark mb-4">Join the Gym Majlis</h3>
-            <p class="text-gray-600 mb-6 text-lg">
-              Unlock exclusive access to our premium fitness facilities, personal training sessions, and member-only spa discounts.
-            </p>
-            <div class="flex flex-wrap gap-4 mb-6">
-              <div class="flex items-center gap-2">
-                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
-                <span>Unlimited Access</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
-                <span>Free Assessment</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
-                <span>Spa Credits</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <ReactIcon name="HiCheckCircle" className="text-vintage-gold" size={20} />
-                <span>Personal Training</span>
-              </div>
-            </div>
-            <Button href="/membership" variant="primary">View Membership Plans</Button>
-          </div>
-          <div class="md:w-1/3 bg-vintage-gold p-10 text-center text-white h-full w-full flex flex-col justify-center">
-            <span class="text-sm uppercase opacity-90 mb-2">Starting from</span>
-            <span class="text-5xl font-serif font-bold mb-6">₹8,299<span class="text-lg font-sans font-normal">/mo</span></span>
-            <p class="text-sm opacity-90">4 membership tiers available</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     
 

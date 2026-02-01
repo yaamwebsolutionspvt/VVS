@@ -1,20 +1,97 @@
 [
     {
-        "id": "deluxe-suite",
-        "name": "Deluxe Suite",
-        "tagline": "Premium Comfort & Elegance",
-        "description": "Experience refined luxury in our Deluxe Suite, featuring contemporary design with vintage accents. Perfect for guests seeking tranquility and comfort.",
+        "id": "attic-room",
+        "name": "Attic Room",
+        "tagline": "Cozy & Charming",
+        "description": "Experience comfort in our charming Attic Rooms, featuring contemporary design with vintage accents. Perfect for guests seeking a cozy retreat.",
         "images": [
             "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
             "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
             "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
         ],
-        "price": 16999,
-        "size": "450 sq ft",
+        "price": 7000,
+        "priceCP": 6500,
+        "priceEP": 5500,
+        "size": "210 sq ft",
         "capacity": "2 guests",
-        "beds": "1 King Bed",
+        "beds": "1 Queen Bed",
+        "totalRooms": 3,
+        "view": "Enchanting views of verdant apple orchards and serene meadows",
         "amenities": [
-            "Complimentary Spa Access",
+            "Premium Toiletries",
+            "High-Speed WiFi",
+            "Smart TV with Streaming",
+            "Coffee & Tea Station",
+            "Luxury Bathrobes & Slippers",
+            "Daily Housekeeping",
+            "24/7 Room Service"
+        ],
+        "features": [
+            "Moutains, Meadows and apple orchars view",
+            "Rainfall Shower",
+            "Work Desk",
+            "Safe Deposit Box",
+            "Air Conditioning - hot and cold"
+        ]
+    },
+    {
+        "id": "family-suite",
+        "name": "Family Suite",
+        "tagline": "Spacious Luxury & Comfort",
+        "description": "Indulge in our Family Suite with ample space for the whole family. Designed for those who appreciate comfort and sophistication.",
+        "images": [
+            "https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+        ],
+        "price": 12500,
+        "priceCP": 11500,
+        "priceEP": 10000,
+        "size": "280 sq ft",
+        "capacity": "4 guests",
+        "beds": "1 King Bed + 1 Extra Bed",
+        "totalRooms": 3,
+        "view": "Panoramic vistas of majestic snow-capped mountains and lush green valleys",
+        "amenities": [
+            "Premium Toiletries",
+            "High-Speed WiFi",
+            "Smart TV with Streaming",
+            "Mini Bar",
+            "Coffee & Tea Station",
+            "Luxury Bathrobes & Slippers",
+            "Daily Housekeeping",
+            "24/7 Room Service",
+            "Complimentary Breakfast"
+        ],
+        "features": [
+            "Moutains, Meadows and apple orchars view",
+            "Rainfall Shower",
+            "Work Desk",
+            "Safe Deposit Box",
+            "Air Conditioning - hot and cold",
+            "Extra Space"
+        ]
+    },
+    {
+        "id": "premium-balcony",
+        "name": "Premium Balcony Room",
+        "tagline": "Elegant with Private Balcony",
+        "description": "Experience refined luxury in our Premium Balcony Rooms, featuring contemporary design with a private balcony. Perfect for guests seeking tranquility and fresh air.",
+        "images": [
+            "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1615874959474-d609969a20ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+        ],
+        "price": 7000,
+        "priceCP": 6500,
+        "priceEP": 5500,
+        "size": "210 sq ft",
+        "capacity": "2 guests",
+        "beds": "1 Queen Bed",
+        "totalRooms": 9,
+        "view": "Breathtaking views of mystic mountains, blooming apple gardens, and picturesque meadows",
+        "amenities": [
+            "Private Balcony",
             "Premium Toiletries",
             "High-Speed WiFi",
             "Smart TV with Streaming",
@@ -25,129 +102,9 @@
             "24/7 Room Service"
         ],
         "features": [
-            "City or Garden View",
-            "Rainfall Shower",
-            "Work Desk",
+            "Balcony View",
             "Safe Deposit Box",
-            "Air Conditioning"
-        ]
-    },
-    {
-        "id": "royal-suite",
-        "name": "Royal Suite",
-        "tagline": "Spacious Luxury & Privacy",
-        "description": "Indulge in our Royal Suite with separate living area and private balcony. Designed for those who appreciate space and sophistication.",
-        "images": [
-            "https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-        ],
-        "price": 24999,
-        "size": "750 sq ft",
-        "capacity": "3 guests",
-        "beds": "1 King Bed + Sofa Bed",
-        "amenities": [
-            "Private Balcony",
-            "Separate Living Area",
-            "Complimentary Spa Access",
-            "Premium Toiletries & Aromatherapy",
-            "High-Speed WiFi",
-            "Smart TV with Streaming",
-            "Nespresso Machine",
-            "Mini Bar & Wine Fridge",
-            "Luxury Bathrobes & Slippers",
-            "Daily Housekeeping",
-            "24/7 Concierge Service",
-            "Complimentary Breakfast"
-        ],
-        "features": [
-            "Panoramic Views",
-            "Jacuzzi Bathtub",
-            "Rainfall Shower",
-            "Walk-in Closet",
-            "Dining Area",
-            "Safe Deposit Box"
-        ]
-    },
-    {
-        "id": "presidential-villa",
-        "name": "Presidential Villa",
-        "tagline": "Ultimate Luxury Experience",
-        "description": "The pinnacle of luxury living. Our Presidential Villa offers unparalleled privacy with a private pool, dedicated butler service, and bespoke amenities.",
-        "images": [
-            "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1615874959474-d609969a20ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-        ],
-        "price": 49999,
-        "size": "1500 sq ft",
-        "capacity": "4 guests",
-        "beds": "2 King Beds",
-        "amenities": [
-            "Private Infinity Pool",
-            "Dedicated Butler Service",
-            "Private Spa Treatment Room",
-            "Complimentary Daily Spa Sessions",
-            "Premium Toiletries & Aromatherapy",
-            "High-Speed WiFi",
-            "Multiple Smart TVs",
-            "Nespresso & Tea Station",
-            "Full Kitchen",
-            "Wine Cellar",
-            "Luxury Bathrobes & Slippers",
-            "Daily Housekeeping (Twice Daily)",
-            "24/7 Concierge Service",
-            "Complimentary Gourmet Breakfast",
-            "Private Chef Available",
-            "Chauffeur Service"
-        ],
-        "features": [
-            "Panoramic Mountain/City Views",
-            "Multiple Balconies/Terraces",
-            "Master Suite with Jacuzzi",
-            "Steam Room",
-            "Home Theater",
-            "Dining Room (Seats 8)",
-            "Office Space",
-            "Walk-in Closets"
-        ]
-    },
-    {
-        "id": "wellness-retreat",
-        "name": "Wellness Retreat Room",
-        "tagline": "Spa-Focused Sanctuary",
-        "description": "Designed specifically for wellness enthusiasts. This room includes daily spa treatments, yoga sessions, and a curated wellness program.",
-        "images": [
-            "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-        ],
-        "price": 20999,
-        "size": "550 sq ft",
-        "capacity": "2 guests",
-        "beds": "1 King Bed",
-        "amenities": [
-            "Daily Spa Treatment (60 min)",
-            "Morning Yoga Session",
-            "Wellness Consultation",
-            "Aromatherapy Diffuser",
-            "Meditation Corner",
-            "Organic Toiletries",
-            "High-Speed WiFi",
-            "Smart TV with Wellness Content",
-            "Herbal Tea Selection",
-            "Healthy Mini Bar",
-            "Luxury Bathrobes & Slippers",
-            "Daily Housekeeping",
-            "Complimentary Healthy Breakfast"
-        ],
-        "features": [
-            "Garden/Nature View",
-            "Rainfall Shower with Aromatherapy",
-            "Yoga Mat & Props",
-            "Sound Therapy System",
-            "Air Purifier",
-            "Blackout Curtains"
+            "Air Conditioning - hot and cold"
         ]
     }
 ]

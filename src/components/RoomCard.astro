@@ -10,9 +10,12 @@ interface Props {
     description: string;
     images: string[];
     price: number;
+    priceCP: number;
+    priceEP: number;
     size: string;
     capacity: string;
     beds: string;
+    view: string;
     amenities: string[];
     features: string[];
   };
@@ -41,9 +44,22 @@ const waLink = `https://wa.me/91${phoneNumber}?text=I'm interested in booking th
     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
     
     <!-- Price Badge -->
-    <div class="absolute top-4 right-4 bg-vintage-dark/90 backdrop-blur-sm text-white px-4 py-2 rounded-full">
-      <span class="text-2xl font-serif font-bold">₹{room.price.toLocaleString('en-IN')}</span>
-      <span class="text-sm opacity-80">/night</span>
+    <div class="absolute top-4 right-4 bg-vintage-dark/90 backdrop-blur-sm text-white px-4 py-3 rounded-lg">
+      <div class="text-xs opacity-80 mb-1">Starting from</div>
+      <div class="space-y-1">
+        <div class="flex items-baseline gap-2">
+          <span class="text-xs opacity-70">MAP:</span>
+          <span class="text-lg font-serif font-bold">₹{room.price.toLocaleString('en-IN')}</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-xs opacity-70">CP:</span>
+          <span class="text-sm font-semibold">₹{room.priceCP.toLocaleString('en-IN')}</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-xs opacity-70">EP:</span>
+          <span class="text-sm font-semibold">₹{room.priceEP.toLocaleString('en-IN')}</span>
+        </div>
+      </div>
     </div>
     
     <!-- Room Info Overlay -->
@@ -56,7 +72,15 @@ const waLink = `https://wa.me/91${phoneNumber}?text=I'm interested in booking th
   <!-- Content -->
   <div class="p-6 md:p-8">
     <!-- Description -->
-    <p class="text-gray-600 mb-6 leading-relaxed">{room.description}</p>
+    <p class="text-gray-600 mb-3 leading-relaxed">{room.description}</p>
+    
+    <!-- View Description -->
+    <div class="mb-6 p-3 bg-vintage-cream/50 rounded-lg border-l-4 border-vintage-gold">
+      <div class="flex items-start gap-2">
+        <ReactIcon name="RiEyeLine" size={20} className="text-vintage-gold flex-shrink-0 mt-0.5" />
+        <p class="text-sm text-vintage-dark italic">{room.view}</p>
+      </div>
+    </div>
 
     <!-- Quick Info -->
     <div class="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-200">
