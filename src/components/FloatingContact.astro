@@ -1,0 +1,136 @@
+---
+import ReactIcon from './ReactIcon.jsx';
+
+const phoneNumber = "8492984991";
+const waLink = `https://wa.me/91${phoneNumber}`;
+const emailLink = "mailto:info@vintagevillaspa.com";
+const instaLink = "https://www.instagram.com/vintagevilla_spa"; // Update with actual Instagram handle
+---
+
+<!-- Floating Contact Widget -->
+<div class="fixed bottom-6 right-6 z-50 floating-contact-widget">
+  <!-- Main Message Icon Button -->
+  <button 
+    id="contact-toggle" 
+    class="w-14 h-14 bg-vintage-gold hover:bg-vintage-dark text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+    aria-label="Contact Options"
+  >
+    <ReactIcon name="HiChatBubbleLeftRight" size={24} className="group-hover:scale-110 transition-transform" />
+  </button>
+
+  <!-- Expandable Contact Options -->
+  <div 
+    id="contact-options" 
+    class="absolute bottom-20 right-0 flex flex-col gap-3 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4"
+  >
+    <!-- WhatsApp -->
+    <a 
+      href={waLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+      aria-label="WhatsApp"
+      title="Chat on WhatsApp"
+    >
+      <ReactIcon name="FaWhatsapp" size={20} />
+    </a>
+
+    <!-- Email -->
+    <a 
+      href={emailLink}
+      class="w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+      aria-label="Email"
+      title="Send Email"
+    >
+      <ReactIcon name="HiEnvelope" size={20} />
+    </a>
+
+    <!-- Instagram -->
+    <a 
+      href={instaLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+      aria-label="Instagram"
+      title="Follow on Instagram"
+    >
+      <ReactIcon name="FaInstagram" size={20} />
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    const toggleBtn = document.getElementById('contact-toggle');
+    const optionsDiv = document.getElementById('contact-options');
+    let isOpen = false;
+
+    function toggleOptions() {
+      isOpen = !isOpen;
+      
+      if (isOpen) {
+        optionsDiv.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        optionsDiv.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      } else {
+        optionsDiv.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        optionsDiv.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    }
+
+    // Toggle on click
+    toggleBtn.addEventListener('click', toggleOptions);
+
+    // Show on hover
+    toggleBtn.addEventListener('mouseenter', () => {
+      if (!isOpen) {
+        optionsDiv.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        optionsDiv.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    });
+
+    // Hide on mouse leave from entire widget
+    const widget = document.querySelector('.floating-contact-widget');
+    widget.addEventListener('mouseleave', () => {
+      if (!isOpen) {
+        optionsDiv.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        optionsDiv.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!widget.contains(e.target) && isOpen) {
+        toggleOptions();
+      }
+    });
+  })();
+</script>
+
+<style>
+  .floating-contact-widget {
+    animation: float-bounce 3s ease-in-out infinite;
+  }
+
+  @keyframes float-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Pulse animation for main button */
+  #contact-toggle {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(139, 115, 85, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(139, 115, 85, 0);
+    }
+  }
+</style>

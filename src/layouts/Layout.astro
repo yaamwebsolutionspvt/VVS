@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import FloatingContact from '../components/FloatingContact.astro';
 
 interface Props {
   title: string;
@@ -79,5 +80,6 @@ const siteURL = "https://vintagevillaspa.com"; // Update with actual domain
   </head>
   <body class="bg-vintage-cream text-vintage-text antialiased">
     <slot />
+    <FloatingContact />
   </body>
 </html>

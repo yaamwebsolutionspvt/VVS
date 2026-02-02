@@ -10,11 +10,12 @@ const heroImage = "https://storage.eduyaam.com/uploads/20260201163243_Gemini_Gen
 // Enhanced Image Data with Categories
 const galleryItems = [
   { 
-    src: "https://storage.eduyaam.com/uploads/20260124033937_20260123052436_3402059d-4810-4b14-af6d-362d9627ca37.jpg", 
-    alt: "Main Pool Area", 
-    category: "spa",
-    caption: "Serenity Pool at Sunset" 
+    src: "https://storage.eduyaam.com/uploads/20260201163243_Gemini_Generated_Image_m4c1yjm4c1yjm4c1.png",
+    alt: "Entrance View", 
+    category: "exterior",
+    caption: "Grand Entrance" 
   },
+  
   { 
     src: "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg", 
     alt: "Spa Interior", 
@@ -22,7 +23,7 @@ const galleryItems = [
     caption: "Private Treatment Suite" 
   },
   { 
-    src: "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg", 
+    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", 
     alt: "Coffee Shop Details", 
     category: "social",
     caption: "Artisan Brews" 
@@ -38,12 +39,6 @@ const galleryItems = [
     alt: "Lounge Area", 
     category: "social",
     caption: "The Members Lounge" 
-  },
-  { 
-    src: "https://storage.eduyaam.com/uploads/20260123052251_46dbd5cc-ec97-4949-a28d-a7ae35227859.jpg", 
-    alt: "Entrance View", 
-    category: "exterior",
-    caption: "Grand Entrance" 
   },
   // Duplicating a few to show off masonry effect better (in a real app, use unique images)
   { 
@@ -127,7 +122,7 @@ const galleryItems = [
       <img 
         src={galleryItems[1].src} 
         alt="Experience Vintage Villa" 
-        class="w-full h-full object-cover object-center md:fixed md:bg-fixed"
+        class="w-full h-full object-cover object-center animate-parallax-zoom"
         style="object-position: center center;"
       />
     </div>
@@ -140,13 +135,28 @@ const galleryItems = [
     </div>
   </section>
 
+  <style>
+    @keyframes parallax-zoom {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    .animate-parallax-zoom {
+      animation: parallax-zoom 8s ease-in-out infinite alternate;
+    }
+  </style>
+
   <!-- Lightbox Modal (Hidden by default) -->
   <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center opacity-0 transition-opacity duration-300">
     <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-vintage-gold z-50">
       <ReactIcon name="HiXMark" size={40} />
     </button>
     <div class="max-w-5xl max-h-screen p-4 relative text-center">
-      <img id="lightbox-img" src="" alt="Full screen" class="max-h-[85vh] max-w-full object-contain mx-auto shadow-2xl border-4 border-white/10" />
+      <img id="lightbox-img" src="https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg" alt="Full screen" class="max-h-[85vh] max-w-full object-contain mx-auto shadow-2xl border-4 border-white/10" />
       <p id="lightbox-caption" class="text-vintage-gold font-serif text-xl mt-4 tracking-wide"></p>
     </div>
   </div>
