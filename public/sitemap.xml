@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://vintagevilla.com/</loc>
+    <loc>https://vintagevillaspa.com/</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,49 +10,49 @@
   
   <!-- Main Pages -->
   <url>
-    <loc>https://vintagevilla.com/about</loc>
+    <loc>https://vintagevillaspa.com/about</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/services</loc>
+    <loc>https://vintagevillaspa.com/services</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/rooms</loc>
+    <loc>https://vintagevillaspa.com/rooms</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/packages</loc>
+    <loc>https://vintagevillaspa.com/packages</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/membership</loc>
+    <loc>https://vintagevillaspa.com/membership</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/gallery</loc>
+    <loc>https://vintagevillaspa.com/gallery</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/contact</loc>
+    <loc>https://vintagevillaspa.com/contact</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -60,28 +60,28 @@
   
   <!-- Individual Room Pages -->
   <url>
-    <loc>https://vintagevilla.com/rooms/deluxe-suite</loc>
+    <loc>https://vintagevillaspa.com/rooms/deluxe-suite</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/rooms/royal-suite</loc>
+    <loc>https://vintagevillaspa.com/rooms/royal-suite</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/rooms/presidential-villa</loc>
+    <loc>https://vintagevillaspa.com/rooms/presidential-villa</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://vintagevilla.com/rooms/wellness-retreat</loc>
+    <loc>https://vintagevillaspa.com/rooms/wellness-retreat</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

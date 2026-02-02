@@ -23,6 +23,7 @@ const waLink = `https://wa.me/91${phoneNumber}`;
 const heroImage = "https://storage.eduyaam.com/uploads/20260201163243_Gemini_Generated_Image_m4c1yjm4c1yjm4c1.png";
 const spaImage = "https://storage.eduyaam.com/uploads/20260123052422_920808ba-ac28-4388-87e8-54544bccbb07.jpg";
 const gymImage = "https://storage.eduyaam.com/uploads/20260123052416_d0b56d6b-a7c8-4b38-ae8d-cebcfc0b808b.jpg";
+const majlisImage = "https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
 const coffeeImage = "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
 
 
@@ -117,12 +118,15 @@ const featuredPackages = packagesData.filter(p => p.badge || p.category === 'spa
           <p class="max-w-2xl mx-auto text-gray-600">From high-intensity workouts to the deepest state of relaxation, our curated spaces are designed for your lifestyle.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
           <Card title="Vintage Spa" image={spaImage} href="/services#spa" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">Indulge in our signature treatments, massages, and facials designed to restore your inner balance.</p>
           </Card>
-          <Card title="Gym Majlis" image={gymImage} href="/services#gym" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+          <Card title="Gym" image={gymImage} href="/services#gym" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">State-of-the-art equipment in a sophisticated environment for your fitness journey.</p>
+          </Card>
+          <Card title="Majlis" image={majlisImage} href="/services#majlis" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+            <p class="text-gray-600 mb-4">Traditional gathering space for connection, conversation, and authentic hospitality.</p>
           </Card>
           <Card title="Coffee Shop" image={coffeeImage} href="/services#coffee" class="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
             <p class="text-gray-600 mb-4">Artisan coffee and healthy bites to fuel your day or relax after a workout.</p>

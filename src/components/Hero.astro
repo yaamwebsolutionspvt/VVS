@@ -34,12 +34,16 @@ const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
   <div class="absolute inset-0 z-0 overflow-hidden">
     {images.map((img, index) => (
       <div
-        class={`hero-bg absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
-        style={`background-image: url(${img});`}
+        class={`hero-bg absolute inset-0 transition-opacity duration-[2000ms] ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
         data-index={index}
       >
-        <!-- Individual image zoom effect -->
-        <div class="absolute inset-0 bg-inherit scale-100 animate-slow-zoom"></div>
+        <!-- Use img tag with object-fit for better mobile responsiveness -->
+        <img 
+          src={img} 
+          alt={`Hero background ${index + 1}`}
+          class="absolute inset-0 w-full h-full object-cover object-center animate-slow-zoom"
+          style="object-position: center center;"
+        />
       </div>
     ))}
   </div>
@@ -90,7 +94,7 @@ const heightClass = size === 'full' ? 'min-h-screen' : 'h-[60vh] min-h-[400px]';
 
   <!-- Carousel Navigation (Optional) -->
   {isCarousel && (
-    <div class="absolute bottom-6 right-8 z-20 flex gap-2">
+    <div class="absolute bottom-6 right-4 md:right-8 z-20 flex gap-2">
       {images.map((_, index) => (
         <div 
           class={`carousel-dot w-2 h-2 rounded-full border border-vintage-gold/50 transition-all duration-300 ${index === 0 ? 'bg-vintage-gold scale-125' : 'bg-transparent'}`}

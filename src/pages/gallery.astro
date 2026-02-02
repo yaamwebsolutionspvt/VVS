@@ -89,7 +89,7 @@ const galleryItems = [
       <div class="flex flex-wrap justify-center gap-4 mb-12" id="gallery-filters">
         <button class="filter-btn active px-6 py-2 border border-vintage-gold bg-vintage-gold text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="all">All Moments</button>
         <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="spa">The Spa</button>
-        <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="gym">Gym Majlis</button>
+        <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="gym">Gym</button>
         <button class="filter-btn px-6 py-2 border border-vintage-dark text-vintage-dark hover:bg-vintage-dark hover:text-white rounded-full uppercase text-xs font-bold tracking-widest transition-all" data-filter="social">Social & Cafe</button>
       </div>
       
@@ -121,7 +121,16 @@ const galleryItems = [
   </section>
 
   <!-- Parallax Break Section -->
-  <section class="relative h-[60vh] bg-fixed bg-center bg-cover flex items-center justify-center" style={`background-image: url(${galleryItems[1].src})`}>
+  <section class="relative h-[60vh] min-h-[400px] overflow-hidden flex items-center justify-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src={galleryItems[1].src} 
+        alt="Experience Vintage Villa" 
+        class="w-full h-full object-cover object-center md:fixed md:bg-fixed"
+        style="object-position: center center;"
+      />
+    </div>
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative z-10 text-center px-4">
       <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Experience It Live</h2>
